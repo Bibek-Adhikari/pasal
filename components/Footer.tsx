@@ -1,0 +1,67 @@
+"use client";
+
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { MapPin, Phone } from 'lucide-react';
+import { translations } from '../constants/translations';
+import { useApp } from './AppProvider';
+
+export const Footer = () => {
+  const { lang } = useApp();
+  const t = translations[lang];
+
+  return (
+    <footer className="bg-gray-900 dark:bg-slate-950 text-white pt-20 pb-10 border-t border-white/5">
+      <div className="container mx-auto px-4">
+        <div className="grid md:grid-cols-4 gap-12 mb-16">
+          <div className="col-span-2">
+            <div className="flex items-center gap-2 mb-6">
+              <Link href="/home" className="flex items-center gap-2">
+                <Image src="/ganesh.png" alt="" width={32} height={32} className="w-8 h-8 object-contain" />
+                <h1 className="font-bold text-2xl">{t.brand}</h1>
+              </Link>
+            </div>
+            <p className="text-gray-400 max-w-md leading-relaxed mb-8">
+              {t.footerDesc}
+            </p>
+          </div>
+          
+          <div>
+            <h4 className="font-bold text-lg mb-6">Quick Links</h4>
+            <ul className="space-y-4 text-gray-400">
+              <li><Link href="/home" className="hover:text-brand-orange transition-colors">{t.nav.home}</Link></li>
+              <li><Link href="/services" className="hover:text-brand-orange transition-colors">{t.nav.products}</Link></li>
+              <li><Link href="/about" className="hover:text-brand-orange transition-colors">{t.nav.about}</Link></li>
+              <li><Link href="/contact" className="hover:text-brand-orange transition-colors">{t.nav.contact}</Link></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 className="font-bold text-lg mb-6">Contact Info</h4>
+            <ul className="space-y-4 text-gray-400">
+              <li className="flex items-center gap-3">
+                <MapPin size={18} className="text-brand-orange" />
+                {t.addressValue}
+              </li>
+              <li className="flex items-center gap-3">
+                <Phone size={18} className="text-brand-orange" />
+                +977 9842692437
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div className="border-t border-white/10 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-gray-500 text-sm">
+            © {new Date().getFullYear()} {t.brand}. All rights reserved.
+          </p>
+          <div className="flex gap-6 text-gray-500 text-sm">
+            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};

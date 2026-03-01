@@ -1,10 +1,18 @@
 {
-  "title": "विनायक सप्लायर्स | Best Hardware Store in Jhapa - Vinayak Suppliers",
-  "description": "विगत १० वर्षदेखि झापाको कमल-२, क्याम्पा चोकमा सिमेन्ट, डन्डी, रङ, प्लम्बिङ र इलेक्ट्रिकल्सका गुणस्तरीय सामग्रीहरू उपलब्ध गराउँदै आएको भरपर्दो हार्डवेयर पसल।",
-  "keywords": "Hardware store in Jhapa, Vinayak Suppliers, Construction materials Kamal Jhapa, सिमेन्ट र डन्डी झापा, Best Hardware Shop Nepal",
+  "title": "Binayak Suppliers | विनायक सप्लायर्स - Best Hardware Store in Jhapa",
+  "description": "झापाको कमल-२, क्याम्पा चोकमा अवस्थित विनायक सप्लायर्स। विगत १० वर्षदेखि सिमेंत, डन्डी, रङ र इलेक्ट्रिकल्सका गुणस्तरीय सामग्रीहरूको भरपर्दो केन्द्र।",
+  "keywords": "Binayak Suppliers, विनायक सप्लायर्स, Hardware Store in Jhapa, Construction Materials Jhapa, Cement and Steel Shop Jhapa, Paints and Plumbing Jhapa, Kamal-2 Jhapa Hardware, Campa Chowk Jhapa",
   "openGraph": {
-    "title": "विनायक सप्लायर्स - १० वर्षको अटुट विश्वास",
-    "description": "तपाईँको सपनाको घर निर्माणमा हाम्रो साथ। कमल-२, झापा।",
-    "images": ["/01image.jpg"]
+    "title": "विनायक सप्लायर्स - निर्माण सामग्रीको भरपर्दो नाम",
+    "description": "१० वर्षको अनुभव र गुणस्तरमा अटुट विश्वास। सिमेन्ट, फलाम र हार्डवेयरका सबै सामान एकै ठाउँमा।",
+    "images": ["/03image.jpg"]
+  },
+  "twitter": {
+    "title": "Binayak Suppliers Jhapa",
+    "description": "Quality hardware and construction materials in Jhapa since 2072.",
+    "images": ["/03image.jpg"]
+  },
+  "icons": {
+    "icon": "/01image.jpg"
   }
 }

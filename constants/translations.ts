@@ -2,7 +2,7 @@ export const translations = {
   ne: {
     brand: "विनायक सप्लायर्स",
     brandEn: "Vinayak Suppliers",
-    tagline: "दशक लामो अनुभव, अटुट विश्वास",
+    tagline: "दशक लामो अनुभव र, अटुट विश्वास",
     heroDesc: "विगत १० वर्षदेखि झापाको कमल-२ मा गुणस्तरीय निर्माण सामग्रीहरू उपलब्ध गराउँदै आएको तपाईंको भरपर्दो साथी।",
     estd: "स्थापना: २०७२ वैशाख १३",
     yearsTrust: "१०+ वर्षको विश्वास",
@@ -58,7 +58,7 @@ export const translations = {
   en: {
     brand: "Vinayak Suppliers",
     brandEn: "विनायक सप्लायर्स",
-    tagline: "A Decade of Experience, Unwavering Trust.",
+    tagline: "A Decade of Experience, and Trust.",
     heroDesc: "Your reliable partner providing quality construction materials in Kamal-2, Jhapa for the past 10 years.",
     estd: "ESTD. 2072 B.S. (2015 A.D.)",
     yearsTrust: "10+ Years of Trust",

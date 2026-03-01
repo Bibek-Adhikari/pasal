@@ -1,0 +1,226 @@
+"use client";
+
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { 
+  MessageCircle, 
+  Phone, 
+  Facebook, 
+  Music, 
+  MessageSquare,
+  X,
+  Bot,
+} from 'lucide-react';
+import { useApp } from './AppProvider';
+import { translations } from '../constants/translations';
+import { ChatBotOverlay } from '@/components/ChatBotOverlay';
+
+const SOCIAL_LINKS = {
+  whatsapp: "https://wa.me/9779842692437?text=Namaste%20Vinayak%20Suppliers%2C%20I%20have%20an%20inquiry...",
+  messenger: "https://m.me/vinayaksuppliers",
+  facebook: "https://www.facebook.com/binayaksuppliers",
+  tiktok: "https://www.tiktok.com/@vinayaksuppliers",
+  phone: "tel:+9779842692437"
+};
+
+// On desktop: radial arc spreading upper-left (angles in degrees, 0=right, 90=up)
+// Arc from 105° → 195° across 6 items
+const DESKTOP_ANGLES = [105, 123, 141, 159, 177, 195];
+const DESKTOP_RADIUS = 110; // px from button center
+
+// On mobile: straight vertical column going up
+const MOBILE_STEP = 58; // px per item
+
+function degToRad(deg: number) {
+  return (deg * Math.PI) / 180;
+}
+
+export const FloatingContactMenu = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const { lang } = useApp();
+  const t = translations[lang];
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
+  const menuItems = [
+    { id: 'whatsapp', icon: MessageCircle, color: '#25D366', href: SOCIAL_LINKS.whatsapp, label: 'WhatsApp', fillIcon: true },
+    { id: 'messenger', icon: MessageSquare, color: '#0084FF', href: SOCIAL_LINKS.messenger, label: 'Messenger' },
+    { id: 'facebook', icon: Facebook, color: '#1877F2', href: SOCIAL_LINKS.facebook, label: 'Facebook' },
+    { id: 'tiktok', icon: Music, color: '#010101', href: SOCIAL_LINKS.tiktok, label: 'TikTok' },
+    { id: 'phone', icon: Phone, color: '#F97316', href: SOCIAL_LINKS.phone, label: t.phone },
+    { id: 'bot', icon: Bot, color: '#2563EB', onClick: () => { setIsChatOpen(true); setIsOpen(false); }, label: 'AI Chat' },
+  ];
+
+  // Main button size
+  const BTN = 60;
+  // Social button size
+  const ICON_BTN = isMobile ? 44 : 50;
+
+  return (
+    <>
+      {/*
+        Key fix for laptop: the wrapper must NOT clip children.
+        We use overflow: visible so buttons can spread outward past the wrapper bounds.
+        The wrapper is just a positioning anchor at bottom-right.
+      */}
+      <div
+        className="fixed z-[60]"
+        style={{
+          bottom: isMobile ? 20 : 32,
+          right: isMobile ? 16 : 32,
+          width: BTN,
+          height: BTN,
+          // overflow must be visible — this is what was causing the clipping!
+          overflow: 'visible',
+        }}
+      >
+        {/* Social items — positioned absolutely relative to this wrapper */}
+        <AnimatePresence>
+          {isOpen && menuItems.map((item, index) => {
+            let tx: number;
+            let ty: number;
+
+            if (isMobile) {
+              // Straight up
+              tx = 0;
+              ty = -(MOBILE_STEP * (index + 1));
+            } else {
+              // Radial arc: spread upper-left of the button
+              const rad = degToRad(DESKTOP_ANGLES[index]);
+              tx = Math.cos(rad) * DESKTOP_RADIUS;
+              ty = -Math.sin(rad) * DESKTOP_RADIUS;
+            }
+
+            const sharedStyle: React.CSSProperties = {
+              width: ICON_BTN,
+              height: ICON_BTN,
+              backgroundColor: item.color,
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: '0 4px 20px rgba(0,0,0,0.25)',
+              flexShrink: 0,
+            };
+
+            const iconEl = <item.icon size={isMobile ? 19 : 22} color="white" fill={item.fillIcon ? 'white' : 'none'} />;
+
+            return (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, scale: 0, x: 0, y: 0 }}
+                animate={{ opacity: 1, scale: 1, x: tx, y: ty }}
+                exit={{ opacity: 0, scale: 0, x: 0, y: 0 }}
+                transition={{
+                  type: 'spring',
+                  stiffness: 340,
+                  damping: 24,
+                  delay: index * 0.045,
+                }}
+                className="group absolute"
+                style={{
+                  // Center relative to the wrapper (which is BTN × BTN)
+                  top: (BTN - ICON_BTN) / 2,
+                  left: (BTN - ICON_BTN) / 2,
+                  // overflow visible so tooltip shows
+                  overflow: 'visible',
+                }}
+              >
+                {/* Tooltip */}
+                <span
+                  className="
+                    absolute pointer-events-none z-10
+                    bg-gray-900/90 text-white text-xs font-semibold px-2 py-1 rounded-lg
+                    whitespace-nowrap shadow-lg
+                    opacity-0 group-hover:opacity-100 transition-opacity duration-150
+                  "
+                  style={
+                    isMobile
+                      ? { right: '110%', top: '50%', transform: 'translateY(-50%)' }
+                      : { bottom: '110%', left: '50%', transform: 'translateX(-50%)' }
+                  }
+                >
+                  {item.label}
+                </span>
+
+                {/* The icon button */}
+                {item.href ? (
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={sharedStyle}
+                    aria-label={item.label}
+                    className="hover:scale-125 active:scale-95 transition-transform block"
+                  >
+                    {iconEl}
+                  </a>
+                ) : (
+                  <button
+                    onClick={item.onClick}
+                    style={sharedStyle}
+                    aria-label={item.label}
+                    className="hover:scale-125 active:scale-95 transition-transform"
+                  >
+                    {iconEl}
+                  </button>
+                )}
+              </motion.div>
+            );
+          })}
+        </AnimatePresence>
+
+        {/* Main toggle button */}
+        <motion.button
+          onClick={() => setIsOpen(o => !o)}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className="w-full h-full rounded-full text-white flex items-center justify-center transition-colors relative z-10"
+          style={{
+            backgroundColor: isOpen ? '#1e293b' : '#1d4ed8',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
+          }}
+          aria-label="Toggle contact menu"
+        >
+          <AnimatePresence mode="wait">
+            {isOpen ? (
+              <motion.div
+                key="close"
+                initial={{ rotate: -90, opacity: 0 }}
+                animate={{ rotate: 0, opacity: 1 }}
+                exit={{ rotate: 90, opacity: 0 }}
+                transition={{ duration: 0.15 }}
+              >
+                <X size={28} />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="open"
+                initial={{ rotate: 90, opacity: 0 }}
+                animate={{ rotate: 0, opacity: 1 }}
+                exit={{ rotate: -90, opacity: 0 }}
+                transition={{ duration: 0.15 }}
+                className="relative"
+              >
+                <MessageSquare size={28} fill="currentColor" />
+                <span
+                  className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-orange-500 rounded-full border-2 border-blue-700"
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.button>
+      </div>
+
+      {/* ChatBot Overlay */}
+      <ChatBotOverlay isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
+    </>
+  );
+};

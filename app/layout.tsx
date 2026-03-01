@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { AppProvider } from "@/components/AppProvider";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { FloatingContactMenu } from "@/components/FloatingContactMenu";
 
 export const metadata: Metadata = {
   title: "Binayak Suppliers | विनायक सप्लायर्स - Construction Materials in Jhapa",
@@ -87,7 +91,16 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <AppProvider>
+          <div className="selection:bg-brand-orange/30 selection:text-brand-blue dark:selection:text-blue-400">
+            <Header />
+            <main>{children}</main>
+            <Footer />
+            <FloatingContactMenu />
+          </div>
+        </AppProvider>
+      </body>
     </html>
   );
 }
