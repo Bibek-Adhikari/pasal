@@ -54,10 +54,12 @@ export const ServiceSection = () => {
         className="absolute inset-0 z-0 overflow-hidden"
       >
         <motion.div 
-          initial={{ clipPath: "inset(15% 15% 15% 15% round 60px)" }}
+          initial={{ clipPath: "inset(20% 20% 20% 20% round 80px)" }}
           style={{ clipPath }}
           className="absolute inset-0 w-full h-full overflow-hidden"
         >
+          {/* Video with improved contrast */}
+          <div className="absolute inset-0 bg-slate-950/20 z-[1]" /> 
           <video 
             autoPlay 
             loop 
@@ -67,8 +69,19 @@ export const ServiceSection = () => {
           >
             <source src="/01videl.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-950/50 to-slate-950 pointer-events-none" />
-          <div className="absolute inset-0 bg-brand-blue/30 mix-blend-overlay pointer-events-none" />
+
+          {/* Premium Masking Overlays */}
+          {/* 1. Deep Radial Vignette */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#020617_70%)] z-[2] opacity-80" />
+          
+          {/* 2. Side Gradients for Text Legibility */}
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/40 to-transparent z-[3]" />
+          
+          {/* 3. Global Darkening Overlay */}
+          <div className="absolute inset-0 bg-slate-950/30 mix-blend-multiply z-[4]" />
+          
+          {/* 4. Subtle Noise/Texture Overlay (using a CSS pattern) */}
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-[5] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat" />
         </motion.div>
       </motion.div>
 

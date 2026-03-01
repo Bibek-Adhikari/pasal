@@ -596,13 +596,20 @@ const ServiceSection = ()=>{
                 className: "absolute inset-0 z-0 overflow-hidden",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
                     initial: {
-                        clipPath: "inset(15% 15% 15% 15% round 60px)"
+                        clipPath: "inset(20% 20% 20% 20% round 80px)"
                     },
                     style: {
                         clipPath
                     },
                     className: "absolute inset-0 w-full h-full overflow-hidden",
                     children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "absolute inset-0 bg-slate-950/20 z-[1]"
+                        }, void 0, false, {
+                            fileName: "[project]/components/ServiceSection.tsx",
+                            lineNumber: 62,
+                            columnNumber: 11
+                        }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("video", {
                             autoPlay: true,
                             loop: true,
@@ -614,26 +621,40 @@ const ServiceSection = ()=>{
                                 type: "video/mp4"
                             }, void 0, false, {
                                 fileName: "[project]/components/ServiceSection.tsx",
-                                lineNumber: 68,
+                                lineNumber: 70,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0))
                         }, void 0, false, {
                             fileName: "[project]/components/ServiceSection.tsx",
-                            lineNumber: 61,
+                            lineNumber: 63,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-950/50 to-slate-950 pointer-events-none"
+                            className: "absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#020617_70%)] z-[2] opacity-80"
                         }, void 0, false, {
                             fileName: "[project]/components/ServiceSection.tsx",
-                            lineNumber: 70,
+                            lineNumber: 75,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "absolute inset-0 bg-brand-blue/30 mix-blend-overlay pointer-events-none"
+                            className: "absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/40 to-transparent z-[3]"
                         }, void 0, false, {
                             fileName: "[project]/components/ServiceSection.tsx",
-                            lineNumber: 71,
+                            lineNumber: 78,
+                            columnNumber: 11
+                        }, ("TURBOPACK compile-time value", void 0)),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "absolute inset-0 bg-slate-950/30 mix-blend-multiply z-[4]"
+                        }, void 0, false, {
+                            fileName: "[project]/components/ServiceSection.tsx",
+                            lineNumber: 81,
+                            columnNumber: 11
+                        }, ("TURBOPACK compile-time value", void 0)),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "absolute inset-0 opacity-[0.03] pointer-events-none z-[5] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat"
+                        }, void 0, false, {
+                            fileName: "[project]/components/ServiceSection.tsx",
+                            lineNumber: 84,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
@@ -651,14 +672,14 @@ const ServiceSection = ()=>{
                 className: "absolute top-20 right-[10%] w-64 h-64 bg-brand-orange/20 rounded-full blur-[120px] animate-pulse"
             }, void 0, false, {
                 fileName: "[project]/components/ServiceSection.tsx",
-                lineNumber: 76,
+                lineNumber: 89,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "absolute bottom-20 left-[10%] w-96 h-96 bg-brand-blue/20 rounded-full blur-[150px] animate-pulse delay-700"
             }, void 0, false, {
                 fileName: "[project]/components/ServiceSection.tsx",
-                lineNumber: 77,
+                lineNumber: 90,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         ]
