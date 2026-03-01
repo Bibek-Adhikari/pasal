@@ -23,9 +23,9 @@ const SOCIAL_LINKS = {
   phone: "tel:+9779842692437"
 };
 
-// On desktop: radial arc spreading upper-left (angles in degrees, 0=right, 90=up)
-// Arc from 105° → 195° across 6 items
-const DESKTOP_ANGLES = [105, 123, 141, 159, 177, 195];
+// On desktop: compact radial arc spreading upper-left
+// Spread from 85° → 235°
+const DESKTOP_ANGLES = [85, 115, 145, 175, 205, 235];
 const DESKTOP_RADIUS = 110; // px from button center
 
 // On mobile: straight vertical column going up
@@ -61,7 +61,7 @@ export const FloatingContactMenu = () => {
   // Main button size
   const BTN = 60;
   // Social button size
-  const ICON_BTN = isMobile ? 44 : 50;
+  const ICON_BTN = isMobile ? 44 : 42;
 
   return (
     <>

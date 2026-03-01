@@ -1462,15 +1462,15 @@ const SOCIAL_LINKS = {
     tiktok: "https://www.tiktok.com/@vinayaksuppliers",
     phone: "tel:+9779842692437"
 };
-// On desktop: radial arc spreading upper-left (angles in degrees, 0=right, 90=up)
-// Arc from 105° → 195° across 6 items
+// On desktop: compact radial arc spreading upper-left
+// Spread from 85° → 235°
 const DESKTOP_ANGLES = [
-    105,
-    123,
-    141,
-    159,
-    177,
-    195
+    85,
+    115,
+    145,
+    175,
+    205,
+    235
 ];
 const DESKTOP_RADIUS = 110; // px from button center
 // On mobile: straight vertical column going up
@@ -1548,7 +1548,7 @@ const FloatingContactMenu = ()=>{
     // Main button size
     const BTN = 60;
     // Social button size
-    const ICON_BTN = isMobile ? 44 : 50;
+    const ICON_BTN = isMobile ? 44 : 42;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {

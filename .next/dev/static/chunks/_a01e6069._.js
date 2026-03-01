@@ -746,23 +746,23 @@ const AudioPlayer = ()=>{
         }
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "bg-white dark:bg-slate-900 p-4 rounded-3xl shadow-xl border border-gray-100 dark:border-slate-800 flex items-center gap-4 max-w-sm mx-auto md:mx-0",
+        className: "bg-white/40 dark:bg-slate-900/40 backdrop-blur-xl p-5 rounded-[2rem] border border-white/20 dark:border-slate-800/50 flex items-center gap-5 shadow-2xl shadow-blue-500/5",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                 onClick: togglePlay,
                 "aria-label": isPlaying ? "Pause Story" : "Play Story",
-                className: "w-14 h-14 bg-brand-blue dark:bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-800 dark:hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/20 active:scale-95",
+                className: "w-16 h-16 bg-gradient-to-br from-brand-blue to-blue-700 dark:from-blue-600 dark:to-blue-800 rounded-2xl flex items-center justify-center text-white hover:scale-105 active:scale-95 transition-all shadow-xl shadow-blue-500/20 group",
                 children: isPlaying ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$pause$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Pause$3e$__["Pause"], {
                     fill: "currentColor",
-                    size: 24
+                    size: 28
                 }, void 0, false, {
                     fileName: "[project]/components/AudioPlayer.tsx",
                     lineNumber: 35,
                     columnNumber: 11
                 }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$play$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Play$3e$__["Play"], {
                     fill: "currentColor",
-                    size: 24,
-                    className: "ml-1"
+                    size: 28,
+                    className: "ml-1 group-hover:translate-x-0.5 transition-transform"
                 }, void 0, false, {
                     fileName: "[project]/components/AudioPlayer.tsx",
                     lineNumber: 37,
@@ -777,7 +777,7 @@ const AudioPlayer = ()=>{
                 className: "flex-1",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
-                        className: "font-bold text-gray-800 dark:text-slate-200",
+                        className: "font-bold text-gray-900 dark:text-slate-100 text-lg leading-tight mb-0.5",
                         children: t.listenStory
                     }, void 0, false, {
                         fileName: "[project]/components/AudioPlayer.tsx",
@@ -785,7 +785,7 @@ const AudioPlayer = ()=>{
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "text-xs text-gray-500 dark:text-slate-400 font-medium",
+                        className: "text-sm text-gray-500 dark:text-slate-400 font-medium",
                         children: lang === 'ne' ? 'Listen to our Story' : 'हाम्रो बारेमा सुन्नुहोस्'
                     }, void 0, false, {
                         fileName: "[project]/components/AudioPlayer.tsx",
@@ -793,16 +793,16 @@ const AudioPlayer = ()=>{
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "flex gap-1 mt-2 items-end h-4",
+                        className: "flex gap-1.5 mt-3 items-end h-5",
                         children: [
-                            ...Array(12)
+                            ...Array(16)
                         ].map((_, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
                                 animate: isPlaying ? {
                                     height: [
                                         4,
-                                        16,
+                                        20,
                                         8,
-                                        12,
+                                        16,
                                         4
                                     ]
                                 } : {
@@ -810,10 +810,10 @@ const AudioPlayer = ()=>{
                                 },
                                 transition: isPlaying ? {
                                     repeat: Infinity,
-                                    duration: 0.8,
+                                    duration: 1,
                                     delay: i * 0.05
                                 } : {},
-                                className: `w-1 rounded-full transition-colors ${isPlaying ? 'bg-brand-orange' : 'bg-gray-200 dark:bg-slate-700'}`
+                                className: `w-1 rounded-full ${isPlaying ? 'bg-brand-orange' : 'bg-gray-300 dark:bg-slate-700'}`
                             }, i, false, {
                                 fileName: "[project]/components/AudioPlayer.tsx",
                                 lineNumber: 47,
@@ -903,70 +903,94 @@ const AboutSection = ()=>{
     }["AboutSection.useEffect"], []);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
         id: "about",
-        className: "py-24 bg-gray-50 dark:bg-slate-900/50 overflow-hidden",
+        className: "py-10 bg-gray-50 dark:bg-slate-900/50 overflow-hidden",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "container mx-auto px-4",
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "flex flex-col md:flex-row items-center gap-16",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "md:w-1/2 relative",
+                        className: "md:w-1/2 flex flex-col gap-10",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "relative z-10 rounded-3xl overflow-hidden shadow-2xl aspect-video",
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                    src: randomImage,
-                                    alt: "About Us",
-                                    fill: true,
-                                    className: "object-cover",
-                                    referrerPolicy: "no-referrer"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/AboutSection.tsx",
-                                    lineNumber: 27,
-                                    columnNumber: 15
-                                }, ("TURBOPACK compile-time value", void 0))
-                            }, void 0, false, {
-                                fileName: "[project]/components/AboutSection.tsx",
-                                lineNumber: 26,
-                                columnNumber: 13
-                            }, ("TURBOPACK compile-time value", void 0)),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "absolute -top-6 -left-6 w-32 h-32 bg-brand-orange rounded-full opacity-20 blur-3xl"
-                            }, void 0, false, {
-                                fileName: "[project]/components/AboutSection.tsx",
-                                lineNumber: 36,
-                                columnNumber: 13
-                            }, ("TURBOPACK compile-time value", void 0)),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "absolute -bottom-10 -right-10 w-64 h-64 bg-brand-blue rounded-full opacity-10 blur-3xl"
-                            }, void 0, false, {
-                                fileName: "[project]/components/AboutSection.tsx",
-                                lineNumber: 37,
-                                columnNumber: 13
-                            }, ("TURBOPACK compile-time value", void 0)),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "absolute -bottom-6 -left-6 bg-white dark:bg-slate-900 p-6 rounded-3xl shadow-xl border border-gray-100 dark:border-slate-800 hidden md:block",
+                                className: "relative group",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "text-4xl font-black text-brand-blue dark:text-blue-400",
-                                        children: "10"
+                                        className: "relative z-10 overflow-hidden shadow-2xl aspect-[4/3]",
+                                        style: {
+                                            clipPath: "inset(0% 0% 0% 0% round 40px 120px 40px 120px)"
+                                        },
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                            src: randomImage,
+                                            alt: "About Us",
+                                            fill: true,
+                                            className: "object-cover transition-transform duration-700 group-hover:scale-110",
+                                            referrerPolicy: "no-referrer"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/AboutSection.tsx",
+                                            lineNumber: 31,
+                                            columnNumber: 17
+                                        }, ("TURBOPACK compile-time value", void 0))
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/AboutSection.tsx",
+                                        lineNumber: 27,
+                                        columnNumber: 15
+                                    }, ("TURBOPACK compile-time value", void 0)),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "absolute -top-10 -left-10 w-40 h-40 bg-brand-orange/20 rounded-full blur-3xl animate-pulse"
                                     }, void 0, false, {
                                         fileName: "[project]/components/AboutSection.tsx",
                                         lineNumber: 40,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "text-sm font-bold text-gray-500 dark:text-slate-400 uppercase tracking-widest",
-                                        children: t.yearsTrust
+                                        className: "absolute -bottom-14 -right-14 w-72 h-72 bg-brand-blue/10 rounded-full blur-[100px] animate-pulse delay-700"
                                     }, void 0, false, {
                                         fileName: "[project]/components/AboutSection.tsx",
                                         lineNumber: 41,
+                                        columnNumber: 15
+                                    }, ("TURBOPACK compile-time value", void 0)),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "absolute -bottom-4 -right-4 bg-white dark:bg-slate-900 p-6 rounded-[2.5rem] shadow-2xl border border-gray-100/50 dark:border-slate-800/50 hidden md:block z-20",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "text-5xl font-black text-brand-blue dark:text-blue-400 leading-none mb-1",
+                                                children: "10"
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/AboutSection.tsx",
+                                                lineNumber: 44,
+                                                columnNumber: 17
+                                            }, ("TURBOPACK compile-time value", void 0)),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "text-[10px] font-black text-gray-400 dark:text-slate-500 uppercase tracking-[0.2em]",
+                                                children: t.yearsTrust
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/AboutSection.tsx",
+                                                lineNumber: 45,
+                                                columnNumber: 17
+                                            }, ("TURBOPACK compile-time value", void 0))
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/components/AboutSection.tsx",
+                                        lineNumber: 43,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/AboutSection.tsx",
-                                lineNumber: 39,
+                                lineNumber: 26,
+                                columnNumber: 13
+                            }, ("TURBOPACK compile-time value", void 0)),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "max-w-md",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$AudioPlayer$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AudioPlayer"], {}, void 0, false, {
+                                    fileName: "[project]/components/AboutSection.tsx",
+                                    lineNumber: 50,
+                                    columnNumber: 15
+                                }, ("TURBOPACK compile-time value", void 0))
+                            }, void 0, false, {
+                                fileName: "[project]/components/AboutSection.tsx",
+                                lineNumber: 49,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
@@ -983,15 +1007,15 @@ const AboutSection = ()=>{
                                 children: lang === 'ne' ? 'हाम्रो कथा' : 'OUR STORY'
                             }, void 0, false, {
                                 fileName: "[project]/components/AboutSection.tsx",
-                                lineNumber: 46,
+                                lineNumber: 55,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                                className: "text-4xl md:text-5xl font-bold text-gray-900 dark:text-slate-100 mb-8 leading-tight",
+                                className: "text-4xl md:text-5xl font-black text-gray-900 dark:text-slate-100 mb-8 leading-[1.15]",
                                 children: t.aboutTitle
                             }, void 0, false, {
                                 fileName: "[project]/components/AboutSection.tsx",
-                                lineNumber: 47,
+                                lineNumber: 56,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -999,56 +1023,51 @@ const AboutSection = ()=>{
                                 children: t.aboutDesc
                             }, void 0, false, {
                                 fileName: "[project]/components/AboutSection.tsx",
-                                lineNumber: 50,
+                                lineNumber: 59,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "space-y-6 mb-10",
+                                className: "grid grid-cols-1 sm:grid-cols-2 gap-6",
                                 children: t.aboutPoints.map((item, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "flex items-center gap-4",
+                                        className: "flex items-center gap-4 group",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 p-1 rounded-full",
+                                                className: "bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 p-2 rounded-xl transition-colors group-hover:bg-emerald-500 group-hover:text-white",
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shield$2d$check$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ShieldCheck$3e$__["ShieldCheck"], {
                                                     size: 20
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/AboutSection.tsx",
-                                                    lineNumber: 58,
+                                                    lineNumber: 67,
                                                     columnNumber: 21
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             }, void 0, false, {
                                                 fileName: "[project]/components/AboutSection.tsx",
-                                                lineNumber: 57,
+                                                lineNumber: 66,
                                                 columnNumber: 19
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "font-semibold text-gray-800 dark:text-slate-200",
+                                                className: "font-bold text-gray-800 dark:text-slate-200 text-sm leading-tight",
                                                 children: item
                                             }, void 0, false, {
                                                 fileName: "[project]/components/AboutSection.tsx",
-                                                lineNumber: 60,
+                                                lineNumber: 69,
                                                 columnNumber: 19
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, i, true, {
                                         fileName: "[project]/components/AboutSection.tsx",
-                                        lineNumber: 56,
+                                        lineNumber: 65,
                                         columnNumber: 17
                                     }, ("TURBOPACK compile-time value", void 0)))
                             }, void 0, false, {
                                 fileName: "[project]/components/AboutSection.tsx",
-                                lineNumber: 54,
-                                columnNumber: 13
-                            }, ("TURBOPACK compile-time value", void 0)),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$AudioPlayer$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AudioPlayer"], {}, void 0, false, {
-                                fileName: "[project]/components/AboutSection.tsx",
-                                lineNumber: 65,
+                                lineNumber: 63,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/AboutSection.tsx",
-                        lineNumber: 45,
+                        lineNumber: 54,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
