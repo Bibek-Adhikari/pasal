@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { scrollTo } from '@/services/navigation';
 import { motion } from 'motion/react';
 import { ChevronRight, Clock, Award, ShieldCheck } from 'lucide-react';
 import { translations } from '../constants/translations';
@@ -49,18 +49,18 @@ export const Hero = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link 
-                href="/services" 
+              <button 
+                onClick={() => scrollTo('services')}
                 className="bg-brand-orange hover:bg-orange-600 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all transform hover:scale-105 shadow-xl shadow-orange-500/30 active:scale-95"
               >
                 {t.ourProducts} <ChevronRight size={20} />
-              </Link>
-              <Link 
-                href="/contact" 
+              </button>
+              <button 
+                onClick={() => scrollTo('contact')}
                 className="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all active:scale-95"
               >
                 {t.nav.contact}
-              </Link>
+              </button>
             </div>
           </motion.div>
 

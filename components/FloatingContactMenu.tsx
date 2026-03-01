@@ -17,7 +17,6 @@ import { ChatBotOverlay } from '@/components/ChatBotOverlay';
 
 const SOCIAL_LINKS = {
   whatsapp: "https://wa.me/9779842692437?text=Namaste%20Vinayak%20Suppliers%2C%20I%20have%20an%20inquiry...",
-  messenger: "https://m.me/vinayaksuppliers",
   facebook: "https://www.facebook.com/binayaksuppliers",
   tiktok: "https://www.tiktok.com/@vinayaksuppliers",
   phone: "tel:+9779842692437"
@@ -25,8 +24,8 @@ const SOCIAL_LINKS = {
 
 // On desktop: compact radial arc spreading upper-left
 // Spread from 85° → 235°
-const DESKTOP_ANGLES = [85, 115, 145, 175, 205, 235];
-const DESKTOP_RADIUS = 110; // px from button center
+const DESKTOP_ANGLES = [75, 105, 135, 165, 195, 225];
+const DESKTOP_RADIUS = 100; // px from button center
 
 // On mobile: straight vertical column going up
 const MOBILE_STEP = 58; // px per item
@@ -51,11 +50,10 @@ export const FloatingContactMenu = () => {
 
   const menuItems = [
     { id: 'whatsapp', icon: MessageCircle, color: '#25D366', href: SOCIAL_LINKS.whatsapp, label: 'WhatsApp', fillIcon: true },
-    { id: 'messenger', icon: MessageSquare, color: '#0084FF', href: SOCIAL_LINKS.messenger, label: 'Messenger' },
     { id: 'facebook', icon: Facebook, color: '#1877F2', href: SOCIAL_LINKS.facebook, label: 'Facebook' },
+    { id: 'bot', icon: Bot, color: '#2563EB', onClick: () => { setIsChatOpen(true); setIsOpen(false); }, label: 'AI Chat' },
     { id: 'tiktok', icon: Music, color: '#010101', href: SOCIAL_LINKS.tiktok, label: 'TikTok' },
     { id: 'phone', icon: Phone, color: '#F97316', href: SOCIAL_LINKS.phone, label: t.phone },
-    { id: 'bot', icon: Bot, color: '#2563EB', onClick: () => { setIsChatOpen(true); setIsOpen(false); }, label: 'AI Chat' },
   ];
 
   // Main button size

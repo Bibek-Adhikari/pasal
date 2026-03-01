@@ -26,7 +26,7 @@ export const AboutSection = () => {
             <div className="relative group">
               <div 
                 className="relative z-10 overflow-hidden shadow-2xl aspect-[4/3]"
-                style={{ clipPath: "inset(0% 0% 0% 0% round 40px 120px 40px 120px)" }}
+                style={{ clipPath: "inset(0% 0% 0% 0% round 40px 120px 30px 120px)" }}
               >
                 <Image 
                   src={randomImage} 

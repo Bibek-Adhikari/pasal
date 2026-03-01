@@ -18,14 +18,21 @@ interface ChatBotOverlayProps {
 }
 
 export const ChatBotOverlay = ({ isOpen, onClose }: ChatBotOverlayProps) => {
+  const { lang } = useApp();
+  const t = translations[lang];
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'bot', content: 'Namaste! I am the Vinayak Suppliers AI assistant. How can I help you regarding our construction materials today?' }
+    { role: 'bot', content: t.chatbotGreeting }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
-  const { lang } = useApp();
-  const t = translations[lang];
+
+  // Update initial greeting if language changes and chat hasn't started
+  useEffect(() => {
+    if (messages.length === 1 && messages[0].role === 'bot') {
+      setMessages([{ role: 'bot', content: t.chatbotGreeting }]);
+    }
+  }, [lang, t.chatbotGreeting]);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -78,7 +85,7 @@ export const ChatBotOverlay = ({ isOpen, onClose }: ChatBotOverlayProps) => {
                   <Bot size={24} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-lg leading-tight">Gemini Assistant</h3>
+                  <h3 className="font-bold text-lg leading-tight">Vinayak Assistant</h3>
                   <div className="flex items-center gap-1.5">
                     <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
                     <span className="text-xs text-blue-100 font-medium">Online & Ready</span>

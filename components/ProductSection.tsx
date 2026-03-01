@@ -19,7 +19,7 @@ export const ProductSection = () => {
   ];
 
   return (
-    <section id="products" className="py-24 bg-white dark:bg-slate-950">
+    <section id="services" className="py-24 bg-white dark:bg-slate-950">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-slate-100 mb-4">{t.ourProducts}</h2>

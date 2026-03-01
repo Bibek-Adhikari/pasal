@@ -7,19 +7,11 @@ import { ContactSection } from "@/components/ContactSection";
 export default function RootPage() {
   return (
     <>
-      <section id="home">
-        <Hero />
-      </section>
-      <section id="services">
-        <ProductSection />
-        <ServiceSection />
-      </section>
-      <section id="about">
-        <AboutSection />
-      </section>
-      <section id="contact">
-        <ContactSection />
-      </section>
+      <Hero />
+      <ProductSection />
+      <ServiceSection />
+      <AboutSection />
+      <ContactSection />
     </>
   );
 }

@@ -14,13 +14,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { translations } from '../constants/translations';
 import { useApp } from './AppProvider';
 
-// Scroll to a section by ID without touching the URL
-function scrollTo(id: string) {
-  const el = document.getElementById(id);
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-}
+import { scrollTo } from '@/services/navigation';
 
 export const Header = () => {
   const { lang, setLang, theme, toggleTheme } = useApp();

@@ -1385,7 +1385,6 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ChatBotOverlay
 ;
 const SOCIAL_LINKS = {
     whatsapp: "https://wa.me/9779842692437?text=Namaste%20Vinayak%20Suppliers%2C%20I%20have%20an%20inquiry...",
-    messenger: "https://m.me/vinayaksuppliers",
     facebook: "https://www.facebook.com/binayaksuppliers",
     tiktok: "https://www.tiktok.com/@vinayaksuppliers",
     phone: "tel:+9779842692437"
@@ -1393,14 +1392,14 @@ const SOCIAL_LINKS = {
 // On desktop: compact radial arc spreading upper-left
 // Spread from 85° → 235°
 const DESKTOP_ANGLES = [
-    85,
-    115,
-    145,
-    175,
-    205,
-    235
+    75,
+    105,
+    135,
+    165,
+    195,
+    225
 ];
-const DESKTOP_RADIUS = 110; // px from button center
+const DESKTOP_RADIUS = 100; // px from button center
 // On mobile: straight vertical column going up
 const MOBILE_STEP = 58; // px per item
 function degToRad(deg) {
@@ -1428,18 +1427,21 @@ const FloatingContactMenu = ()=>{
             fillIcon: true
         },
         {
-            id: 'messenger',
-            icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$message$2d$square$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__MessageSquare$3e$__["MessageSquare"],
-            color: '#0084FF',
-            href: SOCIAL_LINKS.messenger,
-            label: 'Messenger'
-        },
-        {
             id: 'facebook',
             icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$facebook$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Facebook$3e$__["Facebook"],
             color: '#1877F2',
             href: SOCIAL_LINKS.facebook,
             label: 'Facebook'
+        },
+        {
+            id: 'bot',
+            icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$bot$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Bot$3e$__["Bot"],
+            color: '#2563EB',
+            onClick: ()=>{
+                setIsChatOpen(true);
+                setIsOpen(false);
+            },
+            label: 'AI Chat'
         },
         {
             id: 'tiktok',
@@ -1454,16 +1456,6 @@ const FloatingContactMenu = ()=>{
             color: '#F97316',
             href: SOCIAL_LINKS.phone,
             label: t.phone
-        },
-        {
-            id: 'bot',
-            icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$bot$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Bot$3e$__["Bot"],
-            color: '#2563EB',
-            onClick: ()=>{
-                setIsChatOpen(true);
-                setIsOpen(false);
-            },
-            label: 'AI Chat'
         }
     ];
     // Main button size
@@ -1514,7 +1506,7 @@ const FloatingContactMenu = ()=>{
                                 fill: item.fillIcon ? 'white' : 'none'
                             }, void 0, false, {
                                 fileName: "[project]/components/FloatingContactMenu.tsx",
-                                lineNumber: 113,
+                                lineNumber: 111,
                                 columnNumber: 28
                             }, ("TURBOPACK compile-time value", void 0));
                             return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -1565,7 +1557,7 @@ const FloatingContactMenu = ()=>{
                                         children: item.label
                                     }, void 0, false, {
                                         fileName: "[project]/components/FloatingContactMenu.tsx",
-                                        lineNumber: 137,
+                                        lineNumber: 135,
                                         columnNumber: 17
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     item.href ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -1578,7 +1570,7 @@ const FloatingContactMenu = ()=>{
                                         children: iconEl
                                     }, void 0, false, {
                                         fileName: "[project]/components/FloatingContactMenu.tsx",
-                                        lineNumber: 155,
+                                        lineNumber: 153,
                                         columnNumber: 19
                                     }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                         onClick: item.onClick,
@@ -1588,19 +1580,19 @@ const FloatingContactMenu = ()=>{
                                         children: iconEl
                                     }, void 0, false, {
                                         fileName: "[project]/components/FloatingContactMenu.tsx",
-                                        lineNumber: 166,
+                                        lineNumber: 164,
                                         columnNumber: 19
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, item.id, true, {
                                 fileName: "[project]/components/FloatingContactMenu.tsx",
-                                lineNumber: 116,
+                                lineNumber: 114,
                                 columnNumber: 15
                             }, ("TURBOPACK compile-time value", void 0));
                         })
                     }, void 0, false, {
                         fileName: "[project]/components/FloatingContactMenu.tsx",
-                        lineNumber: 85,
+                        lineNumber: 83,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].button, {
@@ -1639,12 +1631,12 @@ const FloatingContactMenu = ()=>{
                                     size: 28
                                 }, void 0, false, {
                                     fileName: "[project]/components/FloatingContactMenu.tsx",
-                                    lineNumber: 201,
+                                    lineNumber: 199,
                                     columnNumber: 17
                                 }, ("TURBOPACK compile-time value", void 0))
                             }, "close", false, {
                                 fileName: "[project]/components/FloatingContactMenu.tsx",
-                                lineNumber: 194,
+                                lineNumber: 192,
                                 columnNumber: 15
                             }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
                                 initial: {
@@ -1669,36 +1661,36 @@ const FloatingContactMenu = ()=>{
                                         fill: "currentColor"
                                     }, void 0, false, {
                                         fileName: "[project]/components/FloatingContactMenu.tsx",
-                                        lineNumber: 212,
+                                        lineNumber: 210,
                                         columnNumber: 17
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         className: "absolute -top-1 -right-1 w-3.5 h-3.5 bg-orange-500 rounded-full border-2 border-blue-700"
                                     }, void 0, false, {
                                         fileName: "[project]/components/FloatingContactMenu.tsx",
-                                        lineNumber: 213,
+                                        lineNumber: 211,
                                         columnNumber: 17
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, "open", true, {
                                 fileName: "[project]/components/FloatingContactMenu.tsx",
-                                lineNumber: 204,
+                                lineNumber: 202,
                                 columnNumber: 15
                             }, ("TURBOPACK compile-time value", void 0))
                         }, void 0, false, {
                             fileName: "[project]/components/FloatingContactMenu.tsx",
-                            lineNumber: 192,
+                            lineNumber: 190,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/components/FloatingContactMenu.tsx",
-                        lineNumber: 181,
+                        lineNumber: 179,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/FloatingContactMenu.tsx",
-                lineNumber: 73,
+                lineNumber: 71,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ChatBotOverlay$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ChatBotOverlay"], {
@@ -1706,7 +1698,7 @@ const FloatingContactMenu = ()=>{
                 onClose: ()=>setIsChatOpen(false)
             }, void 0, false, {
                 fileName: "[project]/components/FloatingContactMenu.tsx",
-                lineNumber: 223,
+                lineNumber: 221,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         ]
