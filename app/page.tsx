@@ -23,7 +23,6 @@ import {
   Moon
 } from 'lucide-react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
-import { generateStoreAudio } from '../services/geminiService';
 import { translations } from '../constants/translations';
 
 type Language = 'ne' | 'en';
@@ -59,8 +58,8 @@ const Header = ({ lang, setLang, theme, toggleTheme }: {
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center gap-2">
-          <div className="bg-brand-orange p-1.5 rounded-lg shadow-lg shadow-orange-500/20">
-            <HardHat className="text-white w-6 h-6" />
+          <div>
+            <Image src="/ganesh.png" alt="" width={32} height={32} className="w-8 h-8 object-contain" />
           </div>
           <div className="flex flex-col">
             <h1 className={`font-bold text-xl leading-none transition-colors ${isScrolled ? 'text-brand-blue dark:text-blue-400' : 'text-white'}`}>
@@ -181,11 +180,11 @@ const Header = ({ lang, setLang, theme, toggleTheme }: {
                 </a>
               ))}
               <a 
-                href="tel:+9779800000000" 
+                href="tel:+9779842692437" 
                 className="bg-brand-blue dark:bg-blue-600 text-white p-4 rounded-xl font-bold flex justify-center items-center gap-2 mt-2"
               >
                 <Phone size={20} />
-                {t.callNow}: 98000-00000
+                {t.callNow}: 9842692437
               </a>
             </nav>
           </motion.div>
@@ -277,35 +276,11 @@ const Hero = ({ lang }: { lang: Language }) => {
 
 const AudioPlayer = ({ lang }: { lang: Language }) => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [audioUrl, setAudioUrl] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const t = translations[lang];
+  const audioUrl = "/dokan.wav";
 
-  // Reset audio when language changes
-  useEffect(() => {
-    setAudioUrl(null);
-    setIsPlaying(false);
-    if (audioRef.current) {
-      audioRef.current.pause();
-    }
-  }, [lang]);
-
-  const togglePlay = async () => {
-    if (!audioUrl && !isLoading) {
-      setIsLoading(true);
-      try {
-        const url = await generateStoreAudio(t.audioScript);
-        if (url) {
-          setAudioUrl(url);
-        }
-      } catch (error) {
-        console.error("Failed to generate audio:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
+  const togglePlay = () => {
     if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.pause();
@@ -316,24 +291,14 @@ const AudioPlayer = ({ lang }: { lang: Language }) => {
     }
   };
 
-  useEffect(() => {
-    if (audioUrl && audioRef.current && !isPlaying) {
-      audioRef.current.play().catch(e => console.error("Audio playback failed:", e));
-      setIsPlaying(true);
-    }
-  }, [audioUrl]);
-
   return (
     <div className="bg-white dark:bg-slate-900 p-4 rounded-3xl shadow-xl border border-gray-100 dark:border-slate-800 flex items-center gap-4 max-w-sm mx-auto md:mx-0">
       <button 
         onClick={togglePlay}
-        disabled={isLoading}
         aria-label={isPlaying ? "Pause Story" : "Play Story"}
-        className="w-14 h-14 bg-brand-blue dark:bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-800 dark:hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/20 disabled:opacity-50 active:scale-95"
+        className="w-14 h-14 bg-brand-blue dark:bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-800 dark:hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/20 active:scale-95"
       >
-        {isLoading ? (
-          <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-        ) : isPlaying ? (
+        {isPlaying ? (
           <Pause fill="currentColor" size={24} />
         ) : (
           <Play fill="currentColor" size={24} className="ml-1" />
@@ -355,14 +320,12 @@ const AudioPlayer = ({ lang }: { lang: Language }) => {
           ))}
         </div>
       </div>
-      {audioUrl && (
-        <audio 
-          ref={audioRef} 
-          src={audioUrl} 
-          onEnded={() => setIsPlaying(false)}
-          className="hidden"
-        />
-      )}
+      <audio 
+        ref={audioRef} 
+        src={audioUrl} 
+        onEnded={() => setIsPlaying(false)}
+        className="hidden"
+      />
     </div>
   );
 };
@@ -638,8 +601,14 @@ const AboutSection = ({ lang }: { lang: Language }) => {
   );
 };
 
+const MAP_CENTER = "26.607105,87.763373";
+const MAP_ZOOM = 18;
+const MAP_EMBED_SATELLITE = `https://www.google.com/maps/embed/v1/view?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_EMBED_API_KEY || ""}&center=${MAP_CENTER}&zoom=${MAP_ZOOM}&maptype=satellite`;
+const MAP_EMBED_FALLBACK = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3580.2!2d87.763373!3d26.607105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e59163c3ed73ed%3A0xd41955fa968114d!2sKyampa+Bazar!5e1!3m2!1sen!2snp!4v1700000000000";
+
 const ContactSection = ({ lang }: { lang: Language }) => {
   const t = translations[lang];
+  const mapEmbedSrc = process.env.NEXT_PUBLIC_GOOGLE_MAPS_EMBED_API_KEY ? MAP_EMBED_SATELLITE : MAP_EMBED_FALLBACK;
   return (
     <section id="contact" className="py-24 bg-white dark:bg-slate-950">
       <div className="container mx-auto px-4">
@@ -676,28 +645,25 @@ const ContactSection = ({ lang }: { lang: Language }) => {
           </div>
           
           <div className="md:w-1/2 bg-gray-100 dark:bg-slate-800 min-h-[400px] relative">
-            <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-10">
-              <div className="bg-white dark:bg-slate-900 p-6 rounded-full shadow-xl mb-6">
-                <MapPin size={48} className="text-brand-blue dark:text-blue-400" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-2">{t.ourLocation}</h3>
-              <p className="text-gray-600 dark:text-slate-400 mb-6">{t.addressValue}</p>
-              <a 
-                href="https://maps.google.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="bg-brand-blue dark:bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-800 dark:hover:bg-blue-700 transition-colors"
-              >
-                {t.viewOnMaps}
-              </a>
-            </div>
-            <Image 
-              src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&q=80&w=1000" 
-              alt="Map" 
-              fill
-              className="object-cover opacity-20 dark:opacity-10"
-              referrerPolicy="no-referrer"
+            <iframe
+              src={mapEmbedSrc}
+              width="100%"
+              height="100%"
+              style={{ border: 0, minHeight: 400 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Store location - Kyampa Bazar, Jhapa"
+              className="absolute inset-0 w-full h-full"
             />
+            <a
+              href="https://www.google.com/maps/place/26%C2%B036'25.6%22N+87%C2%B045'48.1%22E/@26.6070438,87.7631557,40m/data=!3m1!1e3"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="absolute bottom-4 right-4 bg-white dark:bg-slate-900 px-4 py-2 rounded-lg shadow-lg text-sm font-semibold text-gray-800 dark:text-slate-200 hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors z-10"
+            >
+              {t.viewOnMaps}
+            </a>
           </div>
         </div>
       </div>
@@ -713,8 +679,8 @@ const Footer = ({ lang }: { lang: Language }) => {
         <div className="grid md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-2">
             <div className="flex items-center gap-2 mb-6">
-              <div className="bg-brand-orange p-1.5 rounded-lg">
-                <HardHat className="text-white w-6 h-6" />
+              <div>
+                <Image src="/ganesh.png" alt="" width={32} height={32} className="w-8 h-8 object-contain" />
               </div>
               <h1 className="font-bold text-2xl">{t.brand}</h1>
             </div>
@@ -742,7 +708,7 @@ const Footer = ({ lang }: { lang: Language }) => {
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={18} className="text-brand-orange" />
-                +977 98000-00000
+                +977 9842692437
               </li>
             </ul>
           </div>
@@ -766,7 +732,7 @@ const WhatsAppButton = ({ lang }: { lang: Language }) => {
   const t = translations[lang];
   return (
     <a 
-      href="https://wa.me/9779800000000?text=Namaste%20Vinayak%20Suppliers%2C%20I%20have%20an%20inquiry..." 
+      href="https://wa.me/9779842692437?text=Namaste%20Vinayak%20Suppliers%2C%20I%20have%20an%20inquiry..." 
       target="_blank" 
       rel="noopener noreferrer"
       className="fixed bottom-8 right-8 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center group"
