@@ -186,17 +186,37 @@ async function generateStoreAudio(text) {
     }
 }
 async function generateStoreResponse(userPrompt) {
-    try {
-        const genAI = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$google$2f$generative$2d$ai$2f$dist$2f$index$2e$mjs__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["GoogleGenerativeAI"](process.env.NEXT_PUBLIC_GEMINI_API_KEY || process.env.GEMINI_API_KEY || "");
-        const model = genAI.getGenerativeModel({
-            model: "gemini-1.5-flash"
-        });
-        const result = await model.generateContent(`${SYSTEM_PROMPT}\n\nUser Question: ${userPrompt}`);
-        return result.response.text();
-    } catch (error) {
-        console.error("Gemini Chat Error:", error);
-        return "I am sorry, I am having trouble connecting right now. Please try again later or call us directly.";
+    const apiKey = (process.env.GEMINI_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY || "").replace(/"/g, '');
+    if (!apiKey) {
+        console.error("Gemini API key is missing");
+        return "I am sorry, the AI assistant is not properly configured. Please check the API key.";
     }
+    const genAI = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$google$2f$generative$2d$ai$2f$dist$2f$index$2e$mjs__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["GoogleGenerativeAI"](apiKey);
+    // Try multiple models in order of preference
+    const modelsToTry = [
+        "gemini-1.5-flash",
+        "gemini-flash-latest",
+        "gemini-pro"
+    ];
+    for (const modelName of modelsToTry){
+        try {
+            const model = genAI.getGenerativeModel({
+                model: modelName
+            });
+            const result = await model.generateContent(`${SYSTEM_PROMPT}\n\nUser Question: ${userPrompt}`);
+            if (result && result.response) {
+                return result.response.text();
+            }
+        } catch (error) {
+            console.error(`Error with model ${modelName}:`, error.message || error);
+            // If it's the last one, we return an error message
+            if (modelName === modelsToTry[modelsToTry.length - 1]) {
+                return "I encountered an error connecting to our AI service. Please try again later.";
+            }
+            continue;
+        }
+    }
+    return "I am sorry, I could not generate a response.";
 }
 ;
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$action$2d$validate$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["ensureServerEntryExports"])([
