@@ -1,4 +1,5 @@
 import { Hero } from "@/components/Hero";
+import { CommitmentSection } from "@/components/CommitmentSection";
 import { ProductSection } from "@/components/ProductSection";
 import { ServiceSection } from "@/components/ServiceSection";
 import { AboutSection } from "@/components/AboutSection";
@@ -9,6 +10,7 @@ export default function RootPage() {
     <>
       <Hero />
       <ProductSection />
+      <CommitmentSection />
       <ServiceSection />
       <AboutSection />
       <ContactSection />
