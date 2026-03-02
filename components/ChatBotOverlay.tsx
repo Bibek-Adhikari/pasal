@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Send, X, Bot, User, Loader2 } from 'lucide-react';
+import { Send, X, Bot, User, Loader2, Volume2 } from 'lucide-react';
 import { generateStoreResponse } from '@/services/geminiService';
 import { useApp } from './AppProvider';
 import { translations } from '../constants/translations';
@@ -25,7 +25,9 @@ export const ChatBotOverlay = ({ isOpen, onClose }: ChatBotOverlayProps) => {
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [speakingIndex, setSpeakingIndex] = useState<number | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const speechSynthesisRef = useRef<SpeechSynthesisUtterance | null>(null);
 
   // Update initial greeting if language changes and chat hasn't started
   useEffect(() => {
@@ -56,6 +58,49 @@ export const ChatBotOverlay = ({ isOpen, onClose }: ChatBotOverlayProps) => {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const speakText = (text: string, index: number) => {
+    // Cancel any ongoing speech
+    window.speechSynthesis.cancel();
+    
+    if (speakingIndex === index) {
+      setSpeakingIndex(null);
+      return;
+    }
+
+    setSpeakingIndex(index);
+
+    // Determine language based on text
+    const isNepali = /[\u0900-\u097F]/.test(text);
+    const lang = isNepali ? 'ne-NP' : 'en-US';
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = lang;
+    utterance.rate = 0.9;
+    utterance.pitch = 1;
+    
+    // Try to find a good voice
+    const voices = window.speechSynthesis.getVoices();
+    const preferredVoice = voices.find(v => 
+      (isNepali && v.lang.includes('ne')) || 
+      (!isNepali && v.lang.includes('en'))
+    );
+    
+    if (preferredVoice) {
+      utterance.voice = preferredVoice;
+    }
+
+    utterance.onend = () => {
+      setSpeakingIndex(null);
+    };
+
+    utterance.onerror = () => {
+      setSpeakingIndex(null);
+    };
+
+    speechSynthesisRef.current = utterance;
+    window.speechSynthesis.speak(utterance);
   };
 
   return (
@@ -125,6 +170,19 @@ export const ChatBotOverlay = ({ isOpen, onClose }: ChatBotOverlayProps) => {
                         : 'bg-gray-100 dark:bg-slate-800 text-gray-800 dark:text-slate-200 rounded-tl-none'
                     } shadow-sm`}>
                       <p className="text-sm leading-relaxed whitespace-pre-wrap">{msg.content}</p>
+                      {msg.role === 'bot' && (
+                        <button
+                          onClick={() => speakText(msg.content, idx)}
+                          className={`mt-2 p-1.5 rounded-full transition-colors ${
+                            speakingIndex === idx
+                              ? 'bg-brand-orange text-white animate-pulse'
+                              : 'bg-gray-200 dark:bg-slate-700 text-gray-600 dark:text-gray-300 hover:bg-brand-orange hover:text-white'
+                          }`}
+                          aria-label="Speak message"
+                        >
+                          <Volume2 size={14} />
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -165,7 +223,7 @@ export const ChatBotOverlay = ({ isOpen, onClose }: ChatBotOverlayProps) => {
                 </button>
               </div>
               <p className="text-center text-[10px] text-gray-400 dark:text-slate-500 mt-2 font-medium">
-                Powered by Google Gemini AI
+                Powered by Groq AI / Gemini AI
               </p>
             </div>
           </motion.div>

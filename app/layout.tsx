@@ -85,7 +85,7 @@ export default function RootLayout({
                 "closes": "19:00"
               },
               "sameAs": [
-                "https://www.facebook.com/binayaksuppliers"
+                "https://www.facebook.com/urmila.neupane.12"
               ]
             }),
           }}

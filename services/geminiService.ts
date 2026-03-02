@@ -35,49 +35,112 @@ Shop Details:
 ${SHOP_DETAILS}`;
 
 export async function generateStoreAudio(text: string) {
-  // Note: Standard @google/generative-ai doesn't support direct TTS in the same way as the preview SDK.
-  // We will fulfill the text generation part here, but the user might need a separate service for TTS.
-  // However, since the user asked for "replay based on shop details only", we prioritize the content control.
-  try {
-    const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY || process.env.GEMINI_API_KEY || "");
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-    const result = await model.generateContent(`${SYSTEM_PROMPT}\n\nTask: Generate a short store intro for: ${text}`);
-    return result.response.text(); 
-  } catch (error) {
-    console.error("Gemini Error:", error);
-    return null;
+  // Try Groq first (faster)
+  const groqKey = (process.env.GROQ_API_KEY || "").replace(/"/g, '');
+  if (groqKey) {
+    try {
+      const result = await generateWithGroq(`${SYSTEM_PROMPT}\n\nTask: Generate a short store intro for: ${text}`, groqKey);
+      return result;
+    } catch (error) {
+      console.error("Groq Error:", error);
+    }
   }
+  
+  // Fallback to Gemini
+  const geminiKey = (process.env.GEMINI_API_KEY || "").replace(/"/g, '');
+  if (geminiKey) {
+    try {
+      const result = await generateWithGemini(`${SYSTEM_PROMPT}\n\nTask: Generate a short store intro for: ${text}`, geminiKey);
+      return result;
+    } catch (error) {
+      console.error("Gemini Error:", error);
+    }
+  }
+  
+  return null;
 }
 
 export async function generateStoreResponse(userPrompt: string) {
-  const apiKey = (process.env.GEMINI_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY || "").replace(/"/g, '');
+  console.log("generateStoreResponse called");
   
-  if (!apiKey) {
-    console.error("Gemini API key is missing");
+  // Check environment variables
+  const geminiKey = (process.env.GEMINI_API_KEY || "").replace(/"/g, '');
+  const groqKey = (process.env.GROQ_API_KEY || "").replace(/"/g, '');
+  
+  console.log("GEMINI_API_KEY present:", !!geminiKey, geminiKey ? geminiKey.substring(0, 10) + "..." : "");
+  console.log("GROQ_API_KEY present:", !!groqKey, groqKey ? groqKey.substring(0, 10) + "..." : "");
+  
+  // Try Groq first (faster)
+  if (groqKey) {
+    try {
+      console.log("Trying Groq...");
+      const result = await generateWithGroq(`${SYSTEM_PROMPT}\n\nUser Question: ${userPrompt}`, groqKey);
+      console.log("Groq success!");
+      return result;
+    } catch (error: any) {
+      console.error("Groq Error:", error.message || error);
+    }
+  }
+  
+  // Fallback to Gemini
+  if (geminiKey) {
+    try {
+      console.log("Trying Gemini...");
+      const result = await generateWithGemini(`${SYSTEM_PROMPT}\n\nUser Question: ${userPrompt}`, geminiKey);
+      console.log("Gemini success!");
+      return result;
+    } catch (error: any) {
+      console.error("Gemini Error:", error.message || error);
+    }
+  }
+  
+  // If neither works
+  if (!geminiKey && !groqKey) {
+    console.error("No API keys found!");
     return "I am sorry, the AI assistant is not properly configured. Please check the API key.";
   }
+  
+  return "I encountered an error connecting to our AI service. Please try again later.";
+}
 
+async function generateWithGemini(prompt: string, apiKey: string): Promise<string> {
   const genAI = new GoogleGenerativeAI(apiKey);
+  const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+  const result = await model.generateContent(prompt);
+  return result.response.text();
+}
+
+async function generateWithGroq(prompt: string, apiKey: string): Promise<string> {
+  const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${apiKey}`
+    },
+    body: JSON.stringify({
+      model: 'llama-3.1-70b-versatile',
+      messages: [
+        {
+          role: 'system',
+          content: prompt
+        }
+      ],
+      temperature: 0.7,
+      max_tokens: 1024,
+      top_p: 1,
+      stream: false
+    })
+  });
+
+  if (!response.ok) {
+    const error = await response.text();
+    throw new Error(`Groq API error: ${response.status} - ${error}`);
+  }
+
+  const data = await response.json();
   
-  // Try multiple models in order of preference
-  const modelsToTry = ["gemini-1.5-flash", "gemini-flash-latest", "gemini-pro"];
-  
-  for (const modelName of modelsToTry) {
-    try {
-      const model = genAI.getGenerativeModel({ model: modelName });
-      const result = await model.generateContent(`${SYSTEM_PROMPT}\n\nUser Question: ${userPrompt}`);
-      if (result && result.response) {
-        return result.response.text();
-      }
-    } catch (error: any) {
-      console.error(`Error with model ${modelName}:`, error.message || error);
-      // If it's the last one, we return an error message
-      if (modelName === modelsToTry[modelsToTry.length - 1]) {
-        return "I encountered an error connecting to our AI service. Please try again later.";
-      }
-      // Otherwise, continue to the next model
-      continue;
-    }
+  if (data.choices && data.choices[0] && data.choices[0].message) {
+    return data.choices[0].message.content;
   }
   
   return "I am sorry, I could not generate a response.";
