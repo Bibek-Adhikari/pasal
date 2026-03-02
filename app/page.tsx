@@ -10,7 +10,6 @@ export default function RootPage() {
       <Hero />
       <ProductSection />
       <CommitmentSection />
-      {/* <ServiceSection /> */}
       <AboutSection />
       <ContactSection />
     </>

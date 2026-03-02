@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import { ShieldCheck } from 'lucide-react';
+import { ShieldCheck, Volume2, VolumeX } from 'lucide-react';
 import { translations } from '../constants/translations';
 import { useApp } from './AppProvider';
 
@@ -11,6 +11,33 @@ export const AboutSection = () => {
   const t = translations[lang];
   const aboutImages = ["/01image.webp", "/02image.webp", "/03image.webp", "/04image.webp", "/05image.webp", "/ganesh.png"];
   const [randomImage, setRandomImage] = useState(aboutImages[0]);
+  const [playing, setPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const toggleAudio = () => {
+    if (!audioRef.current) {
+      audioRef.current = new Audio('/dokan.wav');
+      audioRef.current.loop = true;
+    }
+    
+    if (playing) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    } else {
+      audioRef.current.play();
+    }
+    setPlaying(!playing);
+  };
+
+  // Cleanup audio on unmount
+  useEffect(() => {
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
+  }, []);
 
   useEffect(() => {
     const random = aboutImages[Math.floor(Math.random() * aboutImages.length)];
@@ -52,7 +79,20 @@ export const AboutSection = () => {
             <h2 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-slate-100 mb-8 leading-[1.15]">
               {t.aboutTitle}
             </h2>
-            <p className="text-lg text-gray-600 dark:text-slate-400 mb-8 leading-relaxed">
+            <p className="text-lg text-gray-600 dark:text-slate-400 mb-4 leading-relaxed">
+              {t.aboutDesc}
+            </p>
+            
+            {/* Audio Play Button */}
+            <button
+              onClick={toggleAudio}
+              className="flex flex-col items-center gap-1 px-4 py-2 mb-6 rounded-full bg-brand-orange/10 dark:bg-brand-orange/20 text-brand-orange font-semibold text-sm hover:bg-brand-orange/20 dark:hover:bg-brand-orange/30 transition-colors"
+            >
+              {playing ? <VolumeX size={20} /> : <Volume2 size={20} />}
+              <span className="text-xs">{lang === 'ne' ? 'हाम्रो कथा' : 'Our Story'}</span>
+            </button>
+            
+            <p className="text-lg text-gray-600 dark:text-slate-400 mb-4 leading-relaxed">
               {t.aboutDesc}
             </p>
             

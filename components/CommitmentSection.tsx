@@ -1,32 +1,50 @@
 "use client";
 
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'motion/react';
 import { useApp } from './AppProvider';
 import { translations } from '../constants/translations';
+import { Volume2, VolumeX } from 'lucide-react';
 
 export const CommitmentSection = () => {
   const { lang } = useApp();
   const t = translations[lang];
   const containerRef = useRef<HTMLDivElement>(null);
+  const [playing, setPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const toggleAudio = () => {
+    if (!audioRef.current) {
+      audioRef.current = new Audio('/dokan.wav');
+      audioRef.current.loop = true;
+    }
+    
+    if (playing) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    } else {
+      audioRef.current.play();
+    }
+    setPlaying(!playing);
+  };
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
   });
 
-  // Smooth out the scroll progress
+  // Smooth out the scroll progress with more fluid settings
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
+    stiffness: 50,
+    damping: 20,
     restDelta: 0.001
   });
 
-  // Scale kept moderate to avoid expensive repaints — use GPU-friendly transforms
-  const scale = useTransform(smoothProgress, [0, 0.7], [1, 1.6]);
-  const textOpacity = useTransform(smoothProgress, [0, 0.4, 0.7, 0.9], [0, 1, 1, 0]);
-  const textY = useTransform(smoothProgress, [0, 0.4], [100, 0]);
-  const maskOpacity = useTransform(smoothProgress, [0, 0.1], [0.2, 1]);
+  // Scale kept moderate with smoother easing for fluid reveal effect
+  const scale = useTransform(smoothProgress, [0, 0.7], [1, 1.8]);
+  const textOpacity = useTransform(smoothProgress, [0, 0.3, 0.6, 0.95], [0, 1, 1, 0]);
+  const textY = useTransform(smoothProgress, [0, 0.3], [80, 0]);
+  const maskOpacity = useTransform(smoothProgress, [0, 0.15], [0.1, 1]);
 
   return (
     <section ref={containerRef} className="relative h-[400vh] bg-gray-50 dark:bg-slate-950">
@@ -69,6 +87,15 @@ export const CommitmentSection = () => {
               >
                 {t.commitmentTitle}
               </motion.span>
+
+              {/* Audio Play Button */}
+              <button
+                onClick={toggleAudio}
+                className="pointer-events-auto flex flex-col items-center gap-1 px-4 py-2 mb-4 mx-auto rounded-full bg-brand-orange/10 dark:bg-brand-orange/20 text-brand-orange font-semibold text-sm hover:bg-brand-orange/20 dark:hover:bg-brand-orange/30 transition-colors"
+              >
+                {playing ? <VolumeX size={20} /> : <Volume2 size={20} />}
+                <span className="text-xs">{lang === 'ne' ? 'हाम्रो कथा' : 'Our Story'}</span>
+              </button>
               <h2 className="text-4xl md:text-8xl font-black text-gray-900 dark:text-white mb-8 leading-[1.1]">
                 {t.commitmentSubtitle.split(' ').map((word: string, i: number) => (
                   <React.Fragment key={i}>
@@ -86,7 +113,7 @@ export const CommitmentSection = () => {
           </motion.div>
 
           {/* Border/Shadow follow the portal */}
-          <div className="absolute inset-0 rounded-full border-2 border-brand-orange/30 shadow-[0_0_100px_rgba(255,107,0,0.2)] pointer-events-none" />
+          <div className="absolute inset-0 rounded-full border-2 border-transparent shadow-[0_0_100px_rgba(255,107,0,0.2)] pointer-events-none" />
         </motion.div>
 
 
