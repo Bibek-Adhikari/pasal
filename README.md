@@ -10,8 +10,7 @@ A modern business website built with Next.js, featuring services, products, abou
 - **Products Section** - Product gallery with images
 - **About Section** - Company information
 - **Contact Section** - Contact form and information
-- **AI Chatbot (Vinayak Assistant)** - Gemini-powered AI assistant with TTS support
-- **Audio Player** - Background audio playback
+- **AI Chatbot (Vinayak Assistant)** - Gemini-powered AI assistant
 - **Multi-language Support** - Translation infrastructure (English & Nepali)
 - **Floating Contact Menu** - Quick access contact options
 
@@ -20,8 +19,7 @@ A modern business website built with Next.js, featuring services, products, abou
 - **Framework**: Next.js 14 (App Router)
 - **Language**: TypeScript
 - **Styling**: CSS Modules / Global CSS
-- **AI**: Groq API (Llama 3.1 70B Versatile) + Google Gemini (fallback)
-- **TTS**: Web Speech API / Serve AI TTS
+- **AI**: Groq API (Llama 3.3 70B Versatile) + Google Gemini (fallback)
 - **Deployment**: Vercel (recommended)
 
 ## Getting Started
@@ -53,7 +51,6 @@ Create a `.env.local` file with the following variables:
 ```env
 GEMINI_API_KEY=your_gemini_api_key_here
 GROQ_API_KEY=your_groq_api_key_here
-TTS_API_KEY=your_tts_api_key_here
 ```
 
 ## AI Features (Vinayak Assistant)
@@ -61,35 +58,13 @@ TTS_API_KEY=your_tts_api_key_here
 The AI-powered chatbot uses both Groq and Gemini for natural language processing:
 
 ### Text Generation
-- **Primary**: Groq API with Llama 3.1 70B Versatile model (faster)
-- **Fallback**: Google Gemini 1.5 Flash model
-- Tries Groq first, falls back to Gemini if Groq fails
+
+- **Primary**: Groq API with Llama 3.3 70B Versatile model (fastest)
+- **Secondary Fallback**: Groq API with Llama 3.1 8B Instant model
+- **Tertiary Fallback**: Google Gemini 2.0 Flash / 1.5 Flash models
 - Responds in Nepali (Devanagari) by default
 - Switches to English when user writes in English
 - Provides shop-specific information only
-
-### Text-to-Speech (TTS)
-The chatbot supports TTS for reading AI responses aloud:
-
-#### Option 1: Browser-Native TTS (Default)
-- Uses Web Speech API (SpeechSynthesis)
-- No additional API key required
-- Works in modern browsers
-- Supports Nepali and English languages
-- Click the speaker icon on bot messages to hear the response
-
-#### Option 2: External TTS API (Optional)
-- Configure `TTS_API_KEY` in `.env.local`
-- Uses OpenAI-compatible TTS API (e.g., Serve AI)
-- Higher quality audio output
-- Get API key from https://serveai.chat or similar providers
-
-Example:
-```env
-TTS_API_KEY=sk_your_api_key_here
-```
-
-To enable TTS, the chatbot includes a speaker button on each bot message. Click it to hear the AI response spoken aloud.
 
 ## Project Structure
 
@@ -100,7 +75,7 @@ To enable TTS, the chatbot includes a speaker button on each bot message. Click 
 │   └── page.tsx          # Home page
 ├── components/            # React components
 │   ├── AboutSection.tsx
-│   ├── AudioPlayer.tsx
+│   ├── AppProvider.tsx
 │   ├── ChatBotOverlay.tsx
 │   ├── ContactSection.tsx
 │   ├── FloatingContactMenu.tsx
@@ -117,7 +92,6 @@ To enable TTS, the chatbot includes a speaker button on each bot message. Click 
 │   └── audio/
 ├── services/              # API services
 │   ├── geminiService.ts   # Gemini AI integration
-│   ├── ttsService.ts      # Text-to-Speech service
 │   └── navigation.ts
 ├── package.json
 ├── tsconfig.json
@@ -126,12 +100,12 @@ To enable TTS, the chatbot includes a speaker button on each bot message. Click 
 
 ## Available Scripts
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production |
-| `npm run start` | Start production server |
-| `npm run lint` | Run ESLint |
+| Command         | Description              |
+| --------------- | ------------------------ |
+| `npm run dev`   | Start development server |
+| `npm run build` | Build for production     |
+| `npm run start` | Start production server  |
+| `npm run lint`  | Run ESLint               |
 
 ## Deployment
 

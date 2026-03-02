@@ -35,7 +35,6 @@ export const translations = {
       "छिटो र छरितो डेलिभरी",
       "दशक लामो अनुभव र विश्वास"
     ],
-    listenStory: "हाम्रो बारेमा सुन्नुहोस्",
     contactTitle: "सम्पर्क गर्नुहोस्",
     contactDesc: "तपाईंको निर्माण सम्बन्धी कुनै पनि जिज्ञासा वा अर्डरको लागि हामीलाई सम्झनुहोस्।",
     address: "ठेगाना",
@@ -53,7 +52,6 @@ export const translations = {
     chatWithUs: "हामीसँग कुरा गर्नुहोस्",
     moreInfo: "थप जानकारी",
     callNow: "अहिले कल गर्नुहोस्",
-    audioScript: "नमस्ते, विनायक सप्लायर्समा तपाईंलाई स्वागत छ। २०७२ साल वैशाख १३ गते स्थापना भएको हाम्रो यस पसलले विगत १० वर्षदेखि कमल-२, चम्पा चोक, झापामा गुणस्तरीय निर्माण सामग्रीहरू उपलब्ध गराउँदै आएको छ। जगदेखि भित्तासम्म, सिमेन्ट, रड, रङ, प्लम्बिङ र इलेक्ट्रिकल्सका सबै सामानहरूका लागि हामीलाई सम्झनुहोस्। तपाईंको सपनाको घर बनाउन हामी सधैं साथमा छौं।",
     chatbotGreeting: "नमस्ते! विनायक सप्लायर्समा तपाईंलाई स्वागत छ। म यहाँको एआई सहायक हुँ। निर्माण सामग्री सम्बन्धी केही जानकारी चाहिएमा मलाई सोध्न सक्नुहुन्छ।"
   },
   en: {
@@ -92,7 +90,6 @@ export const translations = {
       "Fast and Efficient Delivery",
       "A Decade of Experience and Trust"
     ],
-    listenStory: "Listen to our Story",
     contactTitle: "Contact Us",
     contactDesc: "Remember us for any construction-related inquiries or orders.",
     address: "Address",
@@ -110,7 +107,6 @@ export const translations = {
     chatWithUs: "Chat with us",
     moreInfo: "More Info",
     callNow: "Call Now",
-    audioScript: "Namaste, welcome to Vinayak Suppliers. Established on April 26, 2015, our store has been providing quality construction materials in Kamal-2, Campa Chowk, Jhapa for the past 10 years. From foundation to walls, remember us for all your cement, rod, paint, plumbing, and electrical needs. We are always with you to build your dream home.",
     chatbotGreeting: "Namaste! Welcome to Vinayak Suppliers. I am your AI assistant. How can I help you with our construction materials today?"
   }
 };

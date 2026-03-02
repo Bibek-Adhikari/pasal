@@ -1,23 +1,19 @@
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+require('dotenv').config({ path: '.env' });
 
-import { GoogleGenerativeAI } from "@google/generative-ai";
-import "dotenv/config";
+async function testGemini() {
+    const apiKey = (process.env.GEMINI_API_KEY || "").replace(/"/g, '');
+    console.log("API Key found:", !!apiKey);
+    if (!apiKey) return;
 
-async function test() {
-  const apiKey = process.env.GEMINI_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY;
-  const cleanKey = apiKey ? apiKey.replace(/"/g, '') : null;
-  console.log("Using API Key:", cleanKey ? "FOUND" : "NOT FOUND");
-  if (!cleanKey) return;
-
-  try {
-    const genAI = new GoogleGenerativeAI(cleanKey);
-    console.log("Listing models...");
-    // Since we are in the latest version, let's try to just use a model directly if listModels is still tricky
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-    const result = await model.generateContent("Hello, who are you?");
-    console.log("Response:", result.response.text());
-  } catch (error) {
-    console.error("Error details:", error);
-  }
+    try {
+        const genAI = new GoogleGenerativeAI(apiKey);
+        const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+        const result = await model.generateContent("Hello, are you working?");
+        console.log("Response:", result.response.text());
+    } catch (error) {
+        console.error("Gemini Test Error:", error);
+    }
 }
 
-test();
+testGemini();

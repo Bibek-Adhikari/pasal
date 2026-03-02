@@ -32,51 +32,20 @@ Strict Rules:
 4. Be professional, welcoming, and helpful.
 
 Shop Details:
-${SHOP_DETAILS}`;
+${SHOP_DETAILS}
 
-export async function generateStoreAudio(text: string) {
-  // Try Groq first (faster)
-  const groqKey = (process.env.GROQ_API_KEY || "").replace(/"/g, '');
-  if (groqKey) {
-    try {
-      const result = await generateWithGroq(`${SYSTEM_PROMPT}\n\nTask: Generate a short store intro for: ${text}`, groqKey);
-      return result;
-    } catch (error) {
-      console.error("Groq Error:", error);
-    }
-  }
-  
-  // Fallback to Gemini
-  const geminiKey = (process.env.GEMINI_API_KEY || "").replace(/"/g, '');
-  if (geminiKey) {
-    try {
-      const result = await generateWithGemini(`${SYSTEM_PROMPT}\n\nTask: Generate a short store intro for: ${text}`, geminiKey);
-      return result;
-    } catch (error) {
-      console.error("Gemini Error:", error);
-    }
-  }
-  
-  return null;
-}
+FINAL REMINDER: Your primary language is Nepali (Devanagari). Always start in Nepali unless the user's message is in English.`;
+
 
 export async function generateStoreResponse(userPrompt: string) {
-  console.log("generateStoreResponse called");
-  
   // Check environment variables
   const geminiKey = (process.env.GEMINI_API_KEY || "").replace(/"/g, '');
   const groqKey = (process.env.GROQ_API_KEY || "").replace(/"/g, '');
-  
-  console.log("GEMINI_API_KEY present:", !!geminiKey, geminiKey ? geminiKey.substring(0, 10) + "..." : "");
-  console.log("GROQ_API_KEY present:", !!groqKey, groqKey ? groqKey.substring(0, 10) + "..." : "");
-  
+
   // Try Groq first (faster)
   if (groqKey) {
     try {
-      console.log("Trying Groq...");
-      const result = await generateWithGroq(`${SYSTEM_PROMPT}\n\nUser Question: ${userPrompt}`, groqKey);
-      console.log("Groq success!");
-      return result;
+      return await generateWithGroq(SYSTEM_PROMPT, userPrompt, groqKey);
     } catch (error: any) {
       console.error("Groq Error:", error.message || error);
     }
@@ -85,62 +54,107 @@ export async function generateStoreResponse(userPrompt: string) {
   // Fallback to Gemini
   if (geminiKey) {
     try {
-      console.log("Trying Gemini...");
-      const result = await generateWithGemini(`${SYSTEM_PROMPT}\n\nUser Question: ${userPrompt}`, geminiKey);
-      console.log("Gemini success!");
-      return result;
+      return await generateWithGemini(SYSTEM_PROMPT, userPrompt, geminiKey);
     } catch (error: any) {
       console.error("Gemini Error:", error.message || error);
+      if (error.message?.includes("429") || error.message?.includes("quota") || error.message?.includes("limit")) {
+        return "The AI service (Gemini) has reached its free tier limit. Please wait a minute or provide a Groq API key for faster service.";
+      }
     }
   }
   
   // If neither works
   if (!geminiKey && !groqKey) {
     console.error("No API keys found!");
-    return "I am sorry, the AI assistant is not properly configured. Please check the API key.";
+    return "I am sorry, the AI assistant is not properly configured. Please add an API key (GEMINI_API_KEY or GROQ_API_KEY) to your .env.local file.";
   }
   
-  return "I encountered an error connecting to our AI service. Please try again later.";
+  return "I encountered an error connecting to our AI service. This might be due to a rate limit or invalid API key. Please check your configuration.";
 }
 
-async function generateWithGemini(prompt: string, apiKey: string): Promise<string> {
+async function generateWithGemini(systemPrompt: string, userPrompt: string, apiKey: string): Promise<string> {
   const genAI = new GoogleGenerativeAI(apiKey);
-  const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
-  const result = await model.generateContent(prompt);
-  return result.response.text();
+  
+  const tryModel = async (modelName: string) => {
+    // For Gemini 1.5/2.0, we can use systemInstruction for system prompt
+    const model = genAI.getGenerativeModel({ 
+      model: modelName,
+      systemInstruction: systemPrompt 
+    });
+    const result = await model.generateContent(userPrompt);
+    return result.response.text();
+  };
+
+  try {
+    // Try Gemini 2.0 Flash first
+    return await tryModel("gemini-2.0-flash");
+  } catch (error: any) {
+    // If rate limited or quota hit, try Gemini 1.5 Flash as fallback
+    if (error.message?.includes("429") || error.message?.includes("quota") || error.message?.includes("limit")) {
+      console.log("Gemini 2.0 throttled, trying Gemini 1.5 Flash...");
+      try {
+        return await tryModel("gemini-1.5-flash");
+      } catch (fallbackError) {
+        console.error("Gemini 1.5 Fallback Error:", fallbackError);
+        throw error; // Re-throw original error if fallback also fails
+      }
+    }
+    throw error;
+  }
 }
 
-async function generateWithGroq(prompt: string, apiKey: string): Promise<string> {
-  const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${apiKey}`
-    },
-    body: JSON.stringify({
-      model: 'llama-3.1-70b-versatile',
-      messages: [
-        {
-          role: 'system',
-          content: prompt
-        }
-      ],
-      temperature: 0.7,
-      max_tokens: 1024,
-      top_p: 1,
-      stream: false
-    })
-  });
+async function generateWithGroq(systemPrompt: string, userPrompt: string, apiKey: string): Promise<string> {
+  const tryModel = async (model: string) => {
+    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${apiKey}`
+      },
+      body: JSON.stringify({
+        model: model,
+        messages: [
+          {
+            role: 'system',
+            content: systemPrompt
+          },
+          {
+            role: 'user',
+            content: userPrompt
+          }
+        ],
+        temperature: 0.7,
+        max_tokens: 1024,
+        top_p: 1,
+        stream: false
+      })
+    });
 
-  if (!response.ok) {
-    const error = await response.text();
-    throw new Error(`Groq API error: ${response.status} - ${error}`);
-  }
+    if (!response.ok) {
+      const error = await response.text();
+      throw new Error(`Groq API error (${model}): ${response.status} - ${error}`);
+    }
 
-  const data = await response.json();
-  
-  if (data.choices && data.choices[0] && data.choices[0].message) {
-    return data.choices[0].message.content;
+    const data = await response.json();
+    return data.choices?.[0]?.message?.content;
+  };
+
+  try {
+    // Try primary 70B model first
+    const result = await tryModel('llama-3.3-70b-versatile');
+    if (result) return result;
+  } catch (error: any) {
+    console.error("Groq 70B Error:", error.message);
+    
+    // Fallback to faster/more available 8B model if 70B fails or is limited
+    try {
+      console.log("Trying Groq 8B fallback...");
+      const result = await tryModel('llama-3.1-8b-instant');
+      if (result) return result;
+    } catch (fallbackError: any) {
+      console.error("Groq 8B Fallback Error:", fallbackError.message);
+      throw error; // Re-throw original error
+    }
   }
   
   return "I am sorry, I could not generate a response.";

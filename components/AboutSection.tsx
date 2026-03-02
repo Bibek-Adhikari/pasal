@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { ShieldCheck } from 'lucide-react';
 import { translations } from '../constants/translations';
 import { useApp } from './AppProvider';
-import { AudioPlayer } from './AudioPlayer';
 
 export const AboutSection = () => {
   const { lang } = useApp();
@@ -46,9 +45,6 @@ export const AboutSection = () => {
               </div>
             </div>
 
-            <div className="max-w-md">
-              <AudioPlayer />
-            </div>
           </div>
 
           <div className="md:w-1/2">
