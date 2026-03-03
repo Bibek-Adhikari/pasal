@@ -5,21 +5,16 @@ import { AboutSection } from "@/components/AboutSection";
 import { ContactSection } from "@/components/ContactSection";
 import { ScrollHandler } from "@/components/ScrollHandler";
 
-import { Language } from "@/components/AppProvider";
-
 export default async function RootPage({
   params,
 }: {
   params: Promise<{ lang: string }>;
 }) {
-  const { lang } = await params;
-  const typedLang = lang as Language;
-
   return (
     <>
       <ScrollHandler />
       <Hero />
-      <ProductSection lang={typedLang} />
+      <ProductSection />
       <CommitmentSection />
       <AboutSection />
       <ContactSection />

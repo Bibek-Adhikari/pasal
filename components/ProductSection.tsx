@@ -1,11 +1,14 @@
+"use client";
+
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { HardHat, PaintBucket, Zap, ChevronRight } from 'lucide-react';
 import { translations } from '../constants/translations';
+import { useApp } from './AppProvider';
 
-// Static server component for SEO
-export const ProductSection = ({ lang = 'en' }: { lang?: 'en' | 'ne' }) => {
+export const ProductSection = () => {
+  const { lang } = useApp();
   const t = translations[lang];
   const icons = [HardHat, PaintBucket, Zap];
   const colors = ["bg-blue-50 dark:bg-blue-900/20 text-brand-blue dark:text-blue-400", "bg-orange-50 dark:bg-orange-900/20 text-brand-orange", "bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400"];

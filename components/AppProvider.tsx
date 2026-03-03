@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useSyncExternalStore } from 'react';
 
 export type Language = 'ne' | 'en';
 export type Theme = 'light' | 'dark';
@@ -10,19 +10,42 @@ interface AppContextType {
   setLang: (lang: Language) => void;
   theme: Theme;
   toggleTheme: () => void;
+  pathname: string;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
+// Subscribe function for SSR hydration safety
+function subscribe() {
+  return () => {};
+}
+
 export function AppProvider({ children, initialLang = 'ne' }: { children: React.ReactNode, initialLang?: Language }) {
-  const [lang, setLang] = useState<Language>(initialLang);
+  // Use state initialized from URL param (SSR) but can be updated client-side
+  const [lang, setLangState] = useState<Language>(initialLang);
   const [theme, setTheme] = useState<Theme>('light');
+  const [pathname, setPathname] = useState<string>('');
+  const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
-    setLang(initialLang);
+    setLangState(initialLang);
   }, [initialLang]);
 
+  // Initialize theme from localStorage and pathname
   useEffect(() => {
+    setPathname(window.location.pathname);
+    
+    const handlePopState = () => {
+      setPathname(window.location.pathname);
+      // Update language from URL when navigating
+      const pathParts = window.location.pathname.split('/');
+      if (pathParts[1] === 'en' || pathParts[1] === 'ne') {
+        setLangState(pathParts[1] as Language);
+      }
+    };
+    
+    window.addEventListener('popstate', handlePopState);
+    
     const savedTheme = localStorage.getItem('theme') as Theme;
     if (savedTheme === 'dark') {
       setTheme('dark');
@@ -31,7 +54,17 @@ export function AppProvider({ children, initialLang = 'ne' }: { children: React.
       setTheme('light');
       document.documentElement.classList.remove('dark');
     }
+    setIsInitialized(true);
+    
+    return () => window.removeEventListener('popstate', handlePopState);
   }, []);
+
+  // Use useSyncExternalStore for SSR hydration safety
+  const langValue = useSyncExternalStore(
+    subscribe,
+    () => lang,
+    () => initialLang
+  );
 
   const toggleTheme = () => {
     setTheme((prev) => {
@@ -46,8 +79,37 @@ export function AppProvider({ children, initialLang = 'ne' }: { children: React.
     });
   };
 
+  // Smooth language change without page reload - updates URL silently
+  const setLang = (newLang: Language) => {
+    setLangState(newLang);
+    // Update URL without full reload using history API
+    const url = new URL(window.location.href);
+    const pathParts = url.pathname.split('/');
+    const hash = url.hash; // Preserve any hash (#contact, etc.)
+    // Keep first empty string, replace language segment
+    if (pathParts[1] === 'en' || pathParts[1] === 'ne') {
+      pathParts[1] = newLang;
+    } else {
+      pathParts.splice(1, 0, newLang);
+    }
+    url.pathname = pathParts.join('/');
+    url.search = ''; // Clear any query params
+    url.hash = ''; // Clear hash to prevent it from being preserved incorrectly
+    window.history.pushState({}, '', url.toString());
+    setPathname(url.pathname);
+  };
+
+  // Expose both context value and raw state for different use cases
+  const contextValue = {
+    lang: langValue,
+    setLang,
+    theme,
+    toggleTheme,
+    pathname,
+  };
+
   return (
-    <AppContext.Provider value={{ lang, setLang, theme, toggleTheme }}>
+    <AppContext.Provider value={contextValue}>
       {children}
     </AppContext.Provider>
   );

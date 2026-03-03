@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { 
@@ -19,9 +18,7 @@ import { useApp } from './AppProvider';
 import { scrollTo } from '@/services/navigation';
 
 export const Header = () => {
-  const { lang, theme, toggleTheme } = useApp();
-  const router = useRouter();
-  const pathname = usePathname();
+  const { lang, setLang, theme, toggleTheme, pathname } = useApp();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -57,8 +54,7 @@ export const Header = () => {
 
   const toggleLang = () => {
     const newLang = lang === 'ne' ? 'en' : 'ne';
-    const newPathname = pathname.replace(`/${lang}`, `/${newLang}`);
-    router.push(newPathname);
+    setLang(newLang);
   };
 
   const navItems = [

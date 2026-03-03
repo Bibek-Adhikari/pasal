@@ -4,8 +4,10 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Clock, Award, ShieldCheck } from 'lucide-react';
 import { translations } from '../constants/translations';
+import { useApp } from './AppProvider';
 
-export default function HeroStats({ lang }: { lang: 'en' | 'ne' }) {
+export default function HeroStats() {
+  const { lang } = useApp();
   const t = translations[lang];
   
   const stats = [

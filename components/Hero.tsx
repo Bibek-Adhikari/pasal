@@ -90,7 +90,7 @@ export const Hero = () => {
               ))}
             </div>
           }>
-            <HeroStats lang={lang} />
+            <HeroStats />
           </React.Suspense>
         </div>
       </div>
