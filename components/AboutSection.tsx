@@ -48,6 +48,7 @@ export const AboutSection = () => {
     <section id="about" className="py-10 bg-gray-50 dark:bg-slate-900/50 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center gap-16">
+          {/* Static content for SEO - server rendered image */}
           <div className="md:w-1/2 flex flex-col gap-10">
             <div className="relative group">
               <div 
@@ -56,10 +57,11 @@ export const AboutSection = () => {
               >
                 <Image 
                   src={randomImage} 
-                  alt="About Us" 
+                  alt="Binayak Suppliers Store - Hardware and Construction Materials Shop in Kamal-2 Jhapa Nepal"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  referrerPolicy="no-referrer"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  priority
                 />
               </div>
               {/* Decorative elements */}
@@ -71,7 +73,6 @@ export const AboutSection = () => {
                 <div className="text-[10px] font-black text-gray-400 dark:text-slate-500 uppercase tracking-[0.2em]">{t.yearsTrust}</div>
               </div>
             </div>
-
           </div>
 
           <div className="md:w-1/2">
@@ -83,10 +84,12 @@ export const AboutSection = () => {
               {t.aboutDesc}
             </p>
             
-            {/* Audio Play Button */}
+            {/* Audio Play Button - accessibility improved */}
             <button
               onClick={toggleAudio}
               className="flex flex-col items-center gap-1 px-4 py-2 mb-6 rounded-full bg-gray-900/80 dark:bg-white/80 text-white dark:text-gray-900 font-semibold text-sm hover:bg-gray-800 dark:hover:bg-white transition-colors backdrop-blur-sm border border-gray-700 dark:border-gray-200"
+              aria-label={playing ? "Pause our story audio" : "Listen to our story audio"}
+              aria-pressed={playing}
             >
               {playing ? <VolumeX size={20} /> : <Volume2 size={20} />}
               <span className="text-xs whitespace-nowrap">{lang === 'ne' ? 'हाम्रो कथा' : 'Our Story'}</span>
@@ -97,7 +100,7 @@ export const AboutSection = () => {
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {t.aboutPoints.map((item, i) => (
+              {t.aboutPoints.map((item: string, i: number) => (
                 <div key={i} className="flex items-center gap-4 group">
                   <div className="bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 p-2 rounded-xl transition-colors group-hover:bg-emerald-500 group-hover:text-white">
                     <ShieldCheck size={20} />

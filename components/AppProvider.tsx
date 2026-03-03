@@ -14,9 +14,13 @@ interface AppContextType {
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
-export function AppProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLang] = useState<Language>('ne');
+export function AppProvider({ children, initialLang = 'ne' }: { children: React.ReactNode, initialLang?: Language }) {
+  const [lang, setLang] = useState<Language>(initialLang);
   const [theme, setTheme] = useState<Theme>('light');
+
+  useEffect(() => {
+    setLang(initialLang);
+  }, [initialLang]);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') as Theme;

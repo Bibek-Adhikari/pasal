@@ -12,13 +12,13 @@ export const Footer = () => {
   const t = translations[lang];
 
   return (
-    <footer className="bg-gray-900 dark:bg-slate-950 text-white pt-20 pb-10 border-t border-white/5">
+    <footer className="bg-gray-900 dark:bg-slate-950 text-white pt-20 pb-10 border-t border-white/5" role="contentinfo">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-2">
             <div className="flex items-center gap-2 mb-6">
-              <button onClick={() => scrollTo('home')} className="flex items-center gap-2">
-                <Image src="/ganesh.png" alt="" width={32} height={32} className="w-8 h-8 object-contain" />
+              <button onClick={() => scrollTo('home')} className="flex items-center gap-2" aria-label="Binayak Suppliers - Go to homepage">
+                <Image src="/ganesh.png" alt="Binayak Suppliers Logo" width={32} height={32} className="w-8 h-8 object-contain" />
                 <h1 className="font-bold text-2xl">{t.brand}</h1>
               </button>
             </div>
@@ -27,7 +27,7 @@ export const Footer = () => {
             </p>
           </div>
           
-          <div>
+          <nav aria-label="Quick Links">
             <h4 className="font-bold text-lg mb-6">Quick Links</h4>
             <ul className="space-y-4 text-gray-400">
               <li><button onClick={() => scrollTo('home')} className="hover:text-brand-orange transition-colors">{t.nav.home}</button></li>
@@ -35,18 +35,18 @@ export const Footer = () => {
               <li><button onClick={() => scrollTo('about')} className="hover:text-brand-orange transition-colors">{t.nav.about}</button></li>
               <li><button onClick={() => scrollTo('contact')} className="hover:text-brand-orange transition-colors">{t.nav.contact}</button></li>
             </ul>
-          </div>
+          </nav>
           
           <div>
             <h4 className="font-bold text-lg mb-6">Contact Info</h4>
             <ul className="space-y-4 text-gray-400">
               <li className="flex items-center gap-3">
-                <MapPin size={18} className="text-brand-orange" />
-                {t.addressValue}
+                <MapPin size={18} className="text-brand-orange" aria-hidden="true" />
+                <address className="not-italic">{t.addressValue}</address>
               </li>
               <li className="flex items-center gap-3">
-                <Phone size={18} className="text-brand-orange" />
-                +977 9842692437
+                <Phone size={18} className="text-brand-orange" aria-hidden="true" />
+                <a href="tel:+9779842692437" className="hover:text-brand-orange transition-colors">+977 9842692437</a>
               </li>
             </ul>
           </div>
@@ -56,10 +56,10 @@ export const Footer = () => {
           <p className="text-gray-500 text-sm">
             © {new Date().getFullYear()} {t.brand}. All rights reserved.
           </p>
-          <div className="flex gap-6 text-gray-500 text-sm">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-          </div>
+          <nav className="flex gap-6 text-gray-500 text-sm" aria-label="Footer navigation">
+            <a href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</a>
+          </nav>
         </div>
       </div>
     </footer>
