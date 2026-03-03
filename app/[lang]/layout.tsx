@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "../globals.css";
 import { AppProvider, Language } from "@/components/AppProvider";
 import { Header } from "@/components/Header";
@@ -6,11 +6,18 @@ import { Footer } from "@/components/Footer";
 import { FloatingContactMenu } from "@/components/FloatingContactMenu";
 import { translations } from "@/constants/translations";
 
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f97316" },
+    { media: "(prefers-color-scheme: dark)", color: "#0f172a" },
+  ],
+};
+
 export async function generateMetadata(
-  { params }: { params: Promise<{ lang: Language }> }
+  { params }: { params: Promise<{ lang: string }> }
 ): Promise<Metadata> {
   const { lang } = await params;
-  const t = translations[lang];
+  const t = translations[lang as Language];
 
   return {
     title: {
@@ -73,7 +80,6 @@ export async function generateMetadata(
       icon: "/ganesh.png",
       apple: "/ganesh.png",
     },
-    manifest: "/manifest.json",
   };
 }
 
@@ -82,7 +88,7 @@ export default async function RootLayout({
   params,
 }: Readonly<{
   children: React.ReactNode;
-  params: Promise<{ lang: Language }>;
+  params: Promise<{ lang: string }>;
 }>) {
   const { lang } = await params;
 
@@ -113,8 +119,8 @@ export default async function RootLayout({
               },
               "geo": {
                 "@type": "GeoCoordinates",
-                "latitude": 26.6667,
-                "longitude": 87.8333
+                "latitude": 26.6070982,
+                "longitude": 87.7633676
               },
               "openingHoursSpecification": [{
                 "@type": "OpeningHoursSpecification",
@@ -166,7 +172,7 @@ export default async function RootLayout({
         />
       </head>
       <body>
-        <AppProvider initialLang={lang}>
+        <AppProvider initialLang={lang as Language}>
           <div className="selection:bg-brand-orange/30 selection:text-brand-blue dark:selection:text-blue-400">
             <Header />
             <main>{children}</main>

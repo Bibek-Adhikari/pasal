@@ -10,15 +10,16 @@ import { Language } from "@/components/AppProvider";
 export default async function RootPage({
   params,
 }: {
-  params: Promise<{ lang: Language }>;
+  params: Promise<{ lang: string }>;
 }) {
   const { lang } = await params;
+  const typedLang = lang as Language;
 
   return (
     <>
       <ScrollHandler />
       <Hero />
-      <ProductSection lang={lang} />
+      <ProductSection lang={typedLang} />
       <CommitmentSection />
       <AboutSection />
       <ContactSection />

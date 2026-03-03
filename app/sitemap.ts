@@ -4,7 +4,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://binayaksuppliers.com';
 
   const languages = ['en', 'ne'];
-  const routes = ['', '/more-info', '#services', '#about', '#contact'];
+  const routes = ['', '/more-info'];
 
   const sitemapEntries: MetadataRoute.Sitemap = [];
 
