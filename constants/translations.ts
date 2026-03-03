@@ -63,7 +63,7 @@ export const translations = {
         description: "विसं २०७२ मा स्थापना भएको विनायक सप्लायर्स झापाको कमल-२ मा गुणस्तरीय निर्माण सामग्रीको मुख्य केन्द्र हो। एक दशकको अनुभवसँगै हामी तपाईँको सपनाको घरका लागि उत्कृष्ट निर्माण समाधानहरू प्रदान गर्दछौँ।"
       },
       features: [
-        { "title": "गुणस्तरको ग्यारेन्टी", "detail": "हामी प्रमाणित र उच्च स्तरका सिमेन्ट, डन्डी र हार्डवेयर मात्र बिक्री गर्छौँ।" },
+        { "title": "गुणस्तरको ग्यारेन्टी", "detail": "हामी प्रमाणित र उच्च स्तरका सिमेन्ट, रड र सामग्रीहरू मात्र बिक्री गर्छौँ।" },
         { "title": "स्थानीय विशेषज्ञता", "detail": "झापाको माटो र यहाँको निर्माण आवश्यकतालाई हामी राम्रोसँग बुझ्दछौँ।" },
         { "title": "उचित मूल्य", "detail": "सबै निर्माण सामग्रीहरूमा पारदर्शी र प्रतिस्पर्धी मूल्य।" }
       ],
@@ -143,7 +143,7 @@ export const translations = {
         description: "Established in 2072 BS, Binayak Suppliers has been a cornerstone of quality construction materials in Kamal-2, Jhapa. With a decade of experience, we provide premium building solutions for your dream home."
       },
       features: [
-        { "title": "Quality Assurance", "detail": "Certified and top-grade cement, steel, and hardware." },
+        { "title": "Quality Assurance", "detail": "Certified and top-grade cement, steel rods, and building materials." },
         { "title": "Local Expertise", "detail": "Deeply rooted in Jhapa, understanding local construction needs." },
         { "title": "Affordable Pricing", "detail": "Transparent and competitive rates for all materials." }
       ],
