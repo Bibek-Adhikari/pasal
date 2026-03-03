@@ -3,6 +3,7 @@ import { ProductSection } from "@/components/ProductSection";
 import { CommitmentSection } from "@/components/CommitmentSection";
 import { AboutSection } from "@/components/AboutSection";
 import { ContactSection } from "@/components/ContactSection";
+import { ScrollHandler } from "@/components/ScrollHandler";
 
 import { Language } from "@/components/AppProvider";
 
@@ -15,6 +16,7 @@ export default async function RootPage({
 
   return (
     <>
+      <ScrollHandler />
       <Hero />
       <ProductSection lang={lang} />
       <CommitmentSection />

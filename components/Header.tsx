@@ -115,7 +115,7 @@ export const Header = () => {
             {navItems.map((item) => (
               <Link
                 key={item.id}
-                href={`/${lang}#${item.id}`}
+                href={`/${lang}${item.id === 'home' ? '' : `?section=${item.id}`}`}
                 onClick={(e: React.MouseEvent) => {
                   if (isHomePage) {
                     e.preventDefault();
@@ -201,7 +201,7 @@ export const Header = () => {
               {navItems.map((item) => (
                 <Link
                   key={item.id}
-                  href={`/${lang}#${item.id}`}
+                  href={`/${lang}${item.id === 'home' ? '' : `?section=${item.id}`}`}
                   onClick={(e: React.MouseEvent) => { 
                     if (isHomePage) {
                       e.preventDefault();

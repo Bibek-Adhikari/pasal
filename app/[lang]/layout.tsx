@@ -73,6 +73,7 @@ export async function generateMetadata(
       icon: "/ganesh.png",
       apple: "/ganesh.png",
     },
+    manifest: "/manifest.json",
   };
 }
 

@@ -95,9 +95,6 @@ export const AboutSection = () => {
               <span className="text-xs whitespace-nowrap">{lang === 'ne' ? 'हाम्रो कथा' : 'Our Story'}</span>
             </button>
             
-            <p className="text-lg text-gray-600 dark:text-slate-400 mb-4 leading-relaxed">
-              {t.aboutDesc}
-            </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {t.aboutPoints.map((item: string, i: number) => (

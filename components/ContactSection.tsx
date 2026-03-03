@@ -5,10 +5,10 @@ import { MapPin, Phone } from 'lucide-react';
 import { translations } from '../constants/translations';
 import { useApp } from './AppProvider';
 
-const MAP_CENTER = "26.607105,87.763373";
-const MAP_ZOOM = 18;
+const MAP_CENTER = "26.6070982,87.7633676";
+const MAP_ZOOM = 19;
 const MAP_EMBED_SATELLITE = `https://www.google.com/maps/embed/v1/view?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_EMBED_API_KEY || ""}&center=${MAP_CENTER}&zoom=${MAP_ZOOM}&maptype=satellite`;
-const MAP_EMBED_FALLBACK = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3580.2!2d87.763373!3d26.607105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e59163c3ed73ed%3A0xd41955fa968114d!2sKyampa+Bazar!5e1!3m2!1sen!2snp!4v1700000000000";
+const MAP_EMBED_FALLBACK = "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d895.0501!2d87.7633676!3d26.6070982!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e591005ac4bdfd%3A0x19b9e5aa648ec8fc!2sVinayak%20Suppliers!5e1!3m2!1sen!2snp!4v1740986000000!5m2!1sen!2snp";
 
 export const ContactSection = () => {
   const { lang } = useApp();
@@ -69,7 +69,7 @@ export const ContactSection = () => {
               className="absolute inset-0 w-full h-full"
             />
             <a
-              href="https://www.google.com/maps/place/26%C2%B036'25.6%22N+87%C2%B045'48.1%22E/@26.6070438,87.7631557,40m/data=!3m1!1e3"
+              href="https://www.google.com/maps/place/Vinayak+Suppliers/@26.6070982,87.7633676,19z/data=!3m1!1e3!4m6!3m5!1s0x39e591005ac4bdfd:0x19b9e5aa648ec8fc!8m2!3d26.6070982!4d87.7633676!16s%2Fg%2F11n4xhvxmn"
               target="_blank"
               rel="noopener noreferrer"
               className="absolute bottom-4 right-4 bg-white dark:bg-slate-900 px-4 py-2 rounded-lg shadow-lg text-sm font-semibold text-gray-800 dark:text-slate-200 hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors z-10"
@@ -100,11 +100,11 @@ export const ContactSection = () => {
               },
               "geo": {
                 "@type": "GeoCoordinates",
-                "latitude": 26.607105,
-                "longitude": 87.763373
+                "latitude": 26.6070982,
+                "longitude": 87.7633676
               },
-              "telephone": "+7",
-              "977984269243openingHours": "Mo-Fr 08:00-19:00, Sa 08:00-19:00",
+              "telephone": "+977 9842692437",
+              "openingHours": "Mo-Fr 08:00-19:00, Sa 08:00-19:00",
               "priceRange": "$$"
             }),
           }}
