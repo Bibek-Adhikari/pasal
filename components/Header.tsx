@@ -74,7 +74,9 @@ export const Header = () => {
         ? 'text-brand-orange'
         : (isScrolled || !isHomePage)
           ? 'text-gray-600 dark:text-slate-300 hover:text-brand-orange'
-          : 'text-white hover:text-brand-orange'
+          : theme === 'light'
+            ? 'text-gray-700 hover:text-brand-orange'
+            : 'text-white hover:text-brand-orange'
     }`;
 
   return (
@@ -136,7 +138,9 @@ export const Header = () => {
               className={`flex items-center gap-2 px-3 py-1.5 rounded-full border transition-all font-bold text-sm ${
                 isScrolled
                   ? 'border-gray-200 dark:border-slate-700 text-gray-700 dark:text-slate-300 hover:bg-gray-50 dark:hover:bg-slate-800'
-                  : 'border-white/30 text-white hover:bg-white/10'
+                  : theme === 'light'
+                    ? 'border-gray-400 text-gray-700 hover:bg-gray-100'
+                    : 'border-white/30 text-white hover:bg-white/10'
               }`}
             >
               <Globe size={16} />
@@ -149,7 +153,9 @@ export const Header = () => {
               className={`p-2 rounded-full border transition-all ${
                 (isScrolled || !isHomePage)
                   ? 'border-gray-200 dark:border-slate-700 text-gray-700 dark:text-slate-300 hover:bg-gray-50 dark:hover:bg-slate-800'
-                  : 'border-white/30 text-white hover:bg-white/10'
+                  : theme === 'light'
+                    ? 'border-gray-400 text-gray-700 hover:bg-gray-100'
+                    : 'border-white/30 text-white hover:bg-white/10'
               }`}
             >
               {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
@@ -170,7 +176,7 @@ export const Header = () => {
           <button
             onClick={toggleLang}
             aria-label="Toggle Language"
-            className={`p-2 rounded-full border transition-colors ${(isScrolled || !isHomePage) ? 'border-gray-200 dark:border-slate-700 text-brand-blue dark:text-blue-400' : 'border-white/30 text-white'}`}
+            className={`p-2 rounded-full border transition-colors ${(isScrolled || !isHomePage) ? 'border-gray-200 dark:border-slate-700 text-brand-blue dark:text-blue-400' : (theme === 'light' ? 'border-gray-400 text-gray-700' : 'border-white/30 text-white')}`}
           >
             <Globe size={18} />
           </button>
@@ -180,9 +186,9 @@ export const Header = () => {
             aria-label="Toggle Menu"
           >
             {isMenuOpen ? (
-              <X className={(isScrolled || !isHomePage) ? 'text-brand-blue dark:text-blue-400' : 'text-white'} />
+              <X className={(isScrolled || !isHomePage) ? 'text-brand-blue dark:text-blue-400' : (theme === 'light' ? 'text-gray-700' : 'text-white')} />
             ) : (
-              <Menu className={(isScrolled || !isHomePage) ? 'text-brand-blue dark:text-blue-400' : 'text-white'} />
+              <Menu className={(isScrolled || !isHomePage) ? 'text-brand-blue dark:text-blue-400' : (theme === 'light' ? 'text-gray-700' : 'text-white')} />
             )}
           </button>
         </div>
