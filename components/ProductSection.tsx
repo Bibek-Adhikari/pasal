@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { HardHat, PaintBucket, Zap, ChevronRight } from 'lucide-react';
 import { translations } from '../constants/translations';
 
@@ -55,9 +56,13 @@ export const ProductSection = ({ lang = 'en' }: { lang?: 'en' | 'ne' }) => {
                 <p className="text-gray-600 dark:text-slate-400 leading-relaxed mb-6">
                   {cat.description}
                 </p>
-                <button className="flex items-center gap-2 font-bold text-brand-blue dark:text-blue-400 hover:text-brand-orange transition-colors" aria-label={`Learn more about ${cat.title}`}>
+                <Link 
+                  href={`/${lang}/more-info`}
+                  className="flex items-center gap-2 font-bold text-brand-blue dark:text-blue-400 hover:text-brand-orange transition-colors" 
+                  aria-label={`Learn more about ${cat.title}`}
+                >
                   {t.moreInfo} <ChevronRight size={18} />
-                </button>
+                </Link>
               </div>
             </article>
           ))}

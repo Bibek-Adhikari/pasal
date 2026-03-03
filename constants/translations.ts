@@ -55,7 +55,29 @@ export const translations = {
     chatWithUs: "हामीसँग कुरा गर्नुहोस्",
     moreInfo: "थप जानकारी",
     callNow: "अहिले कल गर्नुहोस्",
-    chatbotGreeting: "नमस्ते! विनायक सप्लायर्समा तपाईंलाई स्वागत छ। म यहाँको एआई सहायक हुँ। निर्माण सामग्री सम्बन्धी केही जानकारी चाहिएमा मलाई सोध्न सक्नुहुन्छ।"
+    chatbotGreeting: "नमस्ते! विनायक सप्लायर्समा तपाईंलाई स्वागत छ। म यहाँको एआई सहायक हुँ। निर्माण सामग्री सम्बन्धी केही जानकारी चाहिएमा मलाई सोध्न सक्नुहुन्छ।",
+    moreInfoPage: {
+      title: "थप जानकारी",
+      about_us: {
+        heading: "विनायक सप्लायर्सको बारेमा",
+        description: "विसं २०७२ मा स्थापना भएको विनायक सप्लायर्स झापाको कमल-२ मा गुणस्तरीय निर्माण सामग्रीको मुख्य केन्द्र हो। एक दशकको अनुभवसँगै हामी तपाईँको सपनाको घरका लागि उत्कृष्ट निर्माण समाधानहरू प्रदान गर्दछौँ।"
+      },
+      features: [
+        { "title": "गुणस्तरको ग्यारेन्टी", "detail": "हामी प्रमाणित र उच्च स्तरका सिमेन्ट, डन्डी र हार्डवेयर मात्र बिक्री गर्छौँ।" },
+        { "title": "स्थानीय विशेषज्ञता", "detail": "झापाको माटो र यहाँको निर्माण आवश्यकतालाई हामी राम्रोसँग बुझ्दछौँ।" },
+        { "title": "उचित मूल्य", "detail": "सबै निर्माण सामग्रीहरूमा पारदर्शी र प्रतिस्पर्धी मूल्य।" }
+      ],
+      visit_us: {
+        "note": "सामग्रीको ताजा दरभाउ बुझ्न र प्रत्यक्ष गुणस्तर जाँच गर्नका लागि...",
+        "call_to_action": "थप जानकारीका लागि कृपया हाम्रो पसलमा पाल्नुहोला!"
+      },
+      footer_details: {
+        pan: "प्यान नम्बर: ६०३७६०२२८",
+        estd: "स्थापना: २०७२ विसं",
+        location: "क्याम्पा चोक, कमल-२, झापा",
+        contact: "+९७७-९८४२६९२४३७"
+      }
+    }
   },
   en: {
     brand: "Vinayak Suppliers",
@@ -113,6 +135,28 @@ export const translations = {
     chatWithUs: "Chat with us",
     moreInfo: "More Info",
     callNow: "Call Now",
-    chatbotGreeting: "Namaste! Welcome to Vinayak Suppliers. I am your AI assistant. How can I help you with our construction materials today?"
+    chatbotGreeting: "Namaste! Welcome to Vinayak Suppliers. I am your AI assistant. How can I help you with our construction materials today?",
+    moreInfoPage: {
+      title: "More Information",
+      about_us: {
+        heading: "About Binayak Suppliers",
+        description: "Established in 2072 BS, Binayak Suppliers has been a cornerstone of quality construction materials in Kamal-2, Jhapa. With a decade of experience, we provide premium building solutions for your dream home."
+      },
+      features: [
+        { "title": "Quality Assurance", "detail": "Certified and top-grade cement, steel, and hardware." },
+        { "title": "Local Expertise", "detail": "Deeply rooted in Jhapa, understanding local construction needs." },
+        { "title": "Affordable Pricing", "detail": "Transparent and competitive rates for all materials." }
+      ],
+      visit_us: {
+        "note": "To get the latest rates and check material quality firsthand...",
+        "call_to_action": "Please visit our shop for more information!"
+      },
+      footer_details: {
+        pan: "PAN: 603760228",
+        estd: "ESTD: 2072 BS",
+        location: "Campa Chowk, Kamal-2, Jhapa",
+        contact: "+977-9842692437"
+      }
+    }
   }
 };

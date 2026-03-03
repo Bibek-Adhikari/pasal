@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { scrollTo } from '@/services/navigation';
 import { translations } from '../constants/translations';
+import { useApp } from './AppProvider';
 
 // Static Hero content for SEO - this renders on server
 const HeroContent = ({ lang }: { lang: 'en' | 'ne' }) => {
@@ -50,8 +51,7 @@ const HeroContent = ({ lang }: { lang: 'en' | 'ne' }) => {
 const HeroStats = React.lazy(() => import('./HeroStats'));
 
 export const Hero = () => {
-  // Use English for SSR/SEO default
-  const lang: 'en' | 'ne' = 'en';
+  const { lang } = useApp();
   const t = translations[lang];
   
   return (
