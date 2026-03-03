@@ -26,7 +26,7 @@ export const Footer = () => {
               {t.footerDesc}
             </p>
           </div>
-          
+
           <nav aria-label="Quick Links">
             <h4 className="font-bold text-lg mb-6">Quick Links</h4>
             <ul className="space-y-4 text-gray-400">
@@ -36,7 +36,7 @@ export const Footer = () => {
               <li><button onClick={() => scrollTo('contact')} className="hover:text-brand-orange transition-colors">{t.nav.contact}</button></li>
             </ul>
           </nav>
-          
+
           <div>
             <h4 className="font-bold text-lg mb-6">Contact Info</h4>
             <ul className="space-y-4 text-gray-400">
@@ -51,14 +51,17 @@ export const Footer = () => {
             </ul>
           </div>
         </div>
-        
+
         <div className="border-t border-white/10 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-gray-500 text-sm">
             © {new Date().getFullYear()} {t.brand}. All rights reserved.
           </p>
           <nav className="flex gap-6 text-gray-500 text-sm" aria-label="Footer navigation">
-            <a href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</a>
+            <div className="flex flex-col md:flex-row items-center gap-2 text-gray-500 text-sm">
+              <span>कमल-२, झापाको भरपर्दो नाम</span>
+              <span className="hidden md:inline">•</span>
+              <span>नेपालकै गुणस्तरीय निर्माण सामग्री</span>
+            </div>
           </nav>
         </div>
       </div>

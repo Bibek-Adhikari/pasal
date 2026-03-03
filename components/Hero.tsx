@@ -59,7 +59,7 @@ export const Hero = () => {
       <div className="absolute inset-0 z-0">
         <Image 
           src="/01image.webp" 
-          alt="Construction Site - Binayak Suppliers Hardware Store Jhapa Nepal - Quality Cement Steel Paints Plumbing Electrical Materials"
+          alt="Binayak Suppliers Hardware Store Jhapa Nepal - Quality Cement Steel Paints Plumbing Electrical Materials"
           fill
           priority
           className="object-cover"

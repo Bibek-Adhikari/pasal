@@ -76,7 +76,7 @@ export const ChatBotOverlay = ({ isOpen, onClose }: ChatBotOverlayProps) => {
             initial={{ opacity: 0, scale: 0.9, y: 50, x: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0, x: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 50, x: 20 }}
-            className="fixed bottom-32 right-8 w-[calc(100vw-4rem)] md:w-[400px] h-[500px] bg-white dark:bg-slate-900 rounded-[2rem] shadow-[0_20px_60px_rgba(0,0,0,0.3)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.5)] z-[80] flex flex-col overflow-hidden border border-gray-100 dark:border-slate-800"
+            className="fixed bottom-20 right-4 md:right-8 lg:right-12 xl:right-16 w-[calc(100vw-2rem)] sm:w-[360px] md:w-[400px] lg:w-[450px] xl:w-[500px] max-w-[95vw] h-[500px] max-h-[80vh] lg:max-h-[600px] bg-white dark:bg-slate-900 rounded-[2rem] shadow-[0_20px_60px_rgba(0,0,0,0.3)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.5)] z-[80] flex flex-col overflow-hidden border border-gray-100 dark:border-slate-800"
           >
             {/* Header */}
             <div className="bg-brand-blue dark:bg-blue-700 p-6 flex justify-between items-center text-white">
@@ -165,7 +165,7 @@ export const ChatBotOverlay = ({ isOpen, onClose }: ChatBotOverlayProps) => {
                 </button>
               </div>
               <p className="text-center text-[10px] text-gray-400 dark:text-slate-500 mt-2 font-medium">
-                Powered by Groq AI / Gemini AI
+                powred by Groq AI 
               </p>
             </div>
           </motion.div>
