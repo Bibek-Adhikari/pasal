@@ -72,10 +72,10 @@ export const Header = () => {
     `transition-all hover:scale-105 cursor-pointer select-none ${
       activeSection === id && isHomePage
         ? 'text-brand-orange'
-        : (isScrolled || !isHomePage)
-          ? 'text-gray-600 dark:text-slate-300 hover:text-brand-orange'
-          : theme === 'light'
-            ? 'text-gray-700 hover:text-brand-orange'
+        : theme === 'light'
+          ? 'text-gray-800 hover:text-brand-orange'
+          : (isScrolled || !isHomePage)
+            ? 'text-gray-600 dark:text-slate-300 hover:text-brand-orange'
             : 'text-white hover:text-brand-orange'
     }`;
 
@@ -83,8 +83,12 @@ export const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         (isScrolled || !isHomePage)
-          ? 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-md py-2'
-          : 'bg-transparent py-4'
+          ? theme === 'light'
+            ? 'bg-white/90 backdrop-blur-md shadow-md py-2'
+            : 'bg-slate-900/90 backdrop-blur-md shadow-md py-2'
+          : theme === 'light'
+            ? 'bg-white/90 backdrop-blur-md shadow-sm py-2'
+            : 'bg-transparent py-4'
       }`}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
@@ -102,10 +106,10 @@ export const Header = () => {
         >
           <Image src="/ganesh.png" alt="" width={32} height={32} className="w-8 h-8 object-contain" />
           <div className="flex flex-col text-left">
-            <h1 className={`font-bold text-xl leading-none transition-colors ${(isScrolled || !isHomePage) ? 'text-brand-blue dark:text-blue-400' : 'text-white'}`}>
+            <h1 className={`font-bold text-xl leading-none transition-colors ${(isScrolled || !isHomePage) ? 'text-brand-blue dark:text-blue-400' : (theme === 'light' ? 'text-gray-800' : 'text-white')}`}>
               {t.brand}
             </h1>
-            <p className={`text-[10px] uppercase tracking-widest font-bold mt-0.5 ${(isScrolled || !isHomePage) ? 'text-gray-500 dark:text-slate-400' : 'text-white/80'}`}>
+            <p className={`text-[10px] uppercase tracking-widest font-bold mt-0.5 ${(isScrolled || !isHomePage) ? 'text-gray-500 dark:text-slate-400' : (theme === 'light' ? 'text-gray-600' : 'text-white/80')}`}>
               {t.brandEn}
             </p>
           </div>
@@ -136,10 +140,10 @@ export const Header = () => {
               onClick={toggleLang}
               aria-label="Toggle Language"
               className={`flex items-center gap-2 px-3 py-1.5 rounded-full border transition-all font-bold text-sm ${
-                isScrolled
-                  ? 'border-gray-200 dark:border-slate-700 text-gray-700 dark:text-slate-300 hover:bg-gray-50 dark:hover:bg-slate-800'
-                  : theme === 'light'
-                    ? 'border-gray-400 text-gray-700 hover:bg-gray-100'
+                theme === 'light'
+                  ? 'border-gray-400 text-gray-800 bg-white/50 hover:bg-gray-100'
+                  : (isScrolled || !isHomePage)
+                    ? 'border-gray-200 dark:border-slate-700 text-gray-700 dark:text-slate-300 hover:bg-gray-50 dark:hover:bg-slate-800'
                     : 'border-white/30 text-white hover:bg-white/10'
               }`}
             >
@@ -151,10 +155,10 @@ export const Header = () => {
               onClick={toggleTheme}
               aria-label="Toggle Theme"
               className={`p-2 rounded-full border transition-all ${
-                (isScrolled || !isHomePage)
-                  ? 'border-gray-200 dark:border-slate-700 text-gray-700 dark:text-slate-300 hover:bg-gray-50 dark:hover:bg-slate-800'
-                  : theme === 'light'
-                    ? 'border-gray-400 text-gray-700 hover:bg-gray-100'
+                theme === 'light'
+                  ? 'border-gray-400 text-gray-800 bg-white/50 hover:bg-gray-100'
+                  : (isScrolled || !isHomePage)
+                    ? 'border-gray-200 dark:border-slate-700 text-gray-700 dark:text-slate-300 hover:bg-gray-50 dark:hover:bg-slate-800'
                     : 'border-white/30 text-white hover:bg-white/10'
               }`}
             >
@@ -174,9 +178,28 @@ export const Header = () => {
         {/* Mobile top-bar controls */}
         <div className="flex items-center gap-2 md:hidden">
           <button
+            onClick={toggleTheme}
+            aria-label="Toggle Theme"
+            className={`p-2 rounded-full border transition-colors ${
+              theme === 'light'
+                ? 'border-gray-400 text-gray-800 bg-white/50'
+                : (isScrolled || !isHomePage)
+                  ? 'border-gray-200 dark:border-slate-700 text-brand-blue dark:text-blue-400'
+                  : 'border-white/30 text-white'
+            }`}
+          >
+            {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
+          </button>
+          <button
             onClick={toggleLang}
             aria-label="Toggle Language"
-            className={`p-2 rounded-full border transition-colors ${(isScrolled || !isHomePage) ? 'border-gray-200 dark:border-slate-700 text-brand-blue dark:text-blue-400' : (theme === 'light' ? 'border-gray-400 text-gray-700' : 'border-white/30 text-white')}`}
+            className={`p-2 rounded-full border transition-colors ${
+              theme === 'light'
+                ? 'border-gray-400 text-gray-800 bg-white/50'
+                : (isScrolled || !isHomePage)
+                  ? 'border-gray-200 dark:border-slate-700 text-brand-blue dark:text-blue-400'
+                  : 'border-white/30 text-white'
+            }`}
           >
             <Globe size={18} />
           </button>
@@ -186,9 +209,9 @@ export const Header = () => {
             aria-label="Toggle Menu"
           >
             {isMenuOpen ? (
-              <X className={(isScrolled || !isHomePage) ? 'text-brand-blue dark:text-blue-400' : (theme === 'light' ? 'text-gray-700' : 'text-white')} />
+              <X className={theme === 'light' ? 'text-gray-800' : (isScrolled || !isHomePage) ? 'text-brand-blue dark:text-blue-400' : 'text-white'} />
             ) : (
-              <Menu className={(isScrolled || !isHomePage) ? 'text-brand-blue dark:text-blue-400' : (theme === 'light' ? 'text-gray-700' : 'text-white')} />
+              <Menu className={theme === 'light' ? 'text-gray-800' : (isScrolled || !isHomePage) ? 'text-brand-blue dark:text-blue-400' : 'text-white'} />
             )}
           </button>
         </div>
