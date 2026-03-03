@@ -86,10 +86,10 @@ export const AboutSection = () => {
             {/* Audio Play Button */}
             <button
               onClick={toggleAudio}
-              className="flex flex-col items-center gap-1 px-4 py-2 mb-6 rounded-full bg-brand-orange/10 dark:bg-brand-orange/20 text-brand-orange font-semibold text-sm hover:bg-brand-orange/20 dark:hover:bg-brand-orange/30 transition-colors"
+              className="flex flex-col items-center gap-1 px-4 py-2 mb-6 rounded-full bg-gray-900/80 dark:bg-white/80 text-white dark:text-gray-900 font-semibold text-sm hover:bg-gray-800 dark:hover:bg-white transition-colors backdrop-blur-sm border border-gray-700 dark:border-gray-200"
             >
               {playing ? <VolumeX size={20} /> : <Volume2 size={20} />}
-              <span className="text-xs">{lang === 'ne' ? 'हाम्रो कथा' : 'Our Story'}</span>
+              <span className="text-xs whitespace-nowrap">{lang === 'ne' ? 'हाम्रो कथा' : 'Our Story'}</span>
             </button>
             
             <p className="text-lg text-gray-600 dark:text-slate-400 mb-4 leading-relaxed">
