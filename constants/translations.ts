@@ -139,8 +139,8 @@ export const translations = {
     moreInfoPage: {
       title: "More Information",
       about_us: {
-        heading: "About Binayak Suppliers",
-        description: "Established in 2072 BS, Binayak Suppliers has been a cornerstone of quality construction materials in Kamal-2, Jhapa. With a decade of experience, we provide premium building solutions for your dream home."
+        heading: "About Vinayak Suppliers",
+        description: "Established in 2072 BS, Vinayak Suppliers has been a cornerstone of quality construction materials in Kamal-2, Jhapa. With a decade of experience, we provide premium building solutions for your dream home."
       },
       features: [
         { "title": "Quality Assurance", "detail": "Certified and top-grade cement, steel rods, and building materials." },

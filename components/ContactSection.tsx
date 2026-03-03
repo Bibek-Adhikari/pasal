@@ -65,7 +65,7 @@ export const ContactSection = () => {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Binayak Suppliers Location Map - Kyampa Bazar, Jhapa Nepal"
+              title="Vinayak Suppliers Location Map - Kyampa Bazar, Jhapa Nepal"
               className="absolute inset-0 w-full h-full"
             />
             <a
@@ -87,7 +87,7 @@ export const ContactSection = () => {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
-              "name": "Binayak Suppliers",
+              "name": "Vinayak Suppliers",
               "alternateName": "विनायक सप्लायर्स",
               "image": "/02image.webp",
               "address": {

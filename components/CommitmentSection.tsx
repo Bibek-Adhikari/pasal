@@ -76,7 +76,7 @@ export const CommitmentSection = () => {
           >
             <img
               src="/home.webp"
-              alt="Our Commitment to Quality - Binayak Suppliers Jhapa - Building Trust Since 2014"
+              alt="Our Commitment to Quality - Vinayak Suppliers Jhapa - Building Trust Since 2014"
               className="absolute inset-0 w-full h-full object-cover"
               style={{ transform: 'translateZ(0)' }}
             />

@@ -17,8 +17,8 @@ export const Footer = () => {
         <div className="grid md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-2">
             <div className="flex items-center gap-2 mb-6">
-              <button onClick={() => scrollTo('home')} className="flex items-center gap-2" aria-label="Binayak Suppliers - Go to homepage">
-                <Image src="/ganesh.png" alt="Binayak Suppliers Logo" width={32} height={32} className="w-8 h-8 object-contain" />
+              <button onClick={() => scrollTo('home')} className="flex items-center gap-2" aria-label="Vinayak Suppliers - Go to homepage">
+                <Image src="/ganesh.png" alt="Vinayak Suppliers Logo" width={32} height={32} className="w-8 h-8 object-contain" />
                 <h1 className="font-bold text-2xl">{t.brand}</h1>
               </button>
             </div>

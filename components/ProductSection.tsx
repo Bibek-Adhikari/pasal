@@ -44,7 +44,7 @@ export const ProductSection = () => {
               <div className="h-56 overflow-hidden relative">
                 <Image 
                   src={images[i]} 
-                  alt={`${cat.title} - ${cat.subtitle} - Binayak Suppliers Jhapa`}
+                  alt={`${cat.title} - ${cat.subtitle} - Vinayak Suppliers Jhapa`}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                   sizes="(max-width: 768px) 100vw, 33vw"

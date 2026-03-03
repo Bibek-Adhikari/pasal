@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://binayaksuppliers.com';
+  const baseUrl = 'https://vinayaksuppliers.com';
 
   const languages = ['en', 'ne'];
   const routes = ['', '/more-info'];
