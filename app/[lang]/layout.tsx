@@ -57,7 +57,7 @@ export async function generateMetadata(
       alternateLocale: lang === 'ne' ? "en_NP" : "ne_NP",
       images: [
         {
-          url: "/og-image.png",
+          url: "/02image.webp",
           width: 1200,
           height: 630,
           alt: "Binayak Suppliers - Construction Materials in Jhapa",
@@ -69,7 +69,7 @@ export async function generateMetadata(
       title: `${t.brand} | ${t.brandEn} - Construction Materials in Jhapa`,
       description: t.heroDesc,
       creator: "@binayak_suppliers",
-      images: ["/og-image.png"],
+      images: ["/02image.webp"],
     },
     verification: {
       google: "google-site-verification-code",
