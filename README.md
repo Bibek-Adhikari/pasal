@@ -1,6 +1,6 @@
-# Vinayak Suppliers - Construction Materials Website
+# Binayak Suppliers - Construction Materials Website
 
-A modern, bilingual (English/Nepali) Next.js website for Vinayak Suppliers, a trusted construction materials provider in Kamal-2, Campa Chowk, Jhapa, Nepal with over 10 years of experience.
+A modern, bilingual (English/Nepali) Next.js website for Binayak Suppliers, a trusted construction materials provider in Kamal-2, Campa Chowk, Jhapa, Nepal with over 10 years of experience.
 
 ![Next.js](https://img.shields.io/badge/Next.js-16-black)
 ![React](https://img.shields.io/badge/React-19-61DAFB)
@@ -192,4 +192,4 @@ This project is for demonstration purposes.
 
 ---
 
-**Vinayak Suppliers** - दशक लामो अनुभव र अटुट विश्वास | A Decade of Experience and Trust
+**Binayak Suppliers** - दशक लामो अनुभव र अटुट विश्वास | A Decade of Experience and Trust

@@ -57,7 +57,7 @@ export const AboutSection = () => {
               >
                 <Image 
                   src={randomImage} 
-                  alt="Vinayak Suppliers Store - Hardware and Construction Materials Shop in Kamal-2 Jhapa Nepal"
+                  alt="Binayak Suppliers Store - Hardware and Construction Materials Shop in Kamal-2 Jhapa Nepal"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                   sizes="(max-width: 768px) 100vw, 50vw"

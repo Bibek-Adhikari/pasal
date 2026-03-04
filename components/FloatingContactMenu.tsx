@@ -27,7 +27,7 @@ import { translations } from '../constants/translations';
 import { ChatBotOverlay } from '@/components/ChatBotOverlay';
 
 const SOCIAL_LINKS = {
-  whatsapp: "https://wa.me/9779842692437?text=Namaste%20Vinayak%20Suppliers%2C%20I%20have%20an%20inquiry...",
+  whatsapp: "https://wa.me/9779842692437?text=Namaste%20Binayak%20Suppliers%2C%20I%20have%20an%20inquiry...",
   facebook: "https://www.facebook.com/urmila.neupane.12",
   tiktok: "https://www.tiktok.com/@tirthaadhikari70",
   phone: "tel:+9779842692437"

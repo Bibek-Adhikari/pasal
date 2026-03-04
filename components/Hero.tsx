@@ -38,7 +38,7 @@ const HeroContent = ({ lang }: { lang: 'en' | 'ne' }) => {
         <button 
           onClick={() => scrollTo('contact')}
           className="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all active:scale-95"
-          aria-label="Contact Vinayak Suppliers"
+          aria-label="Contact Binayak Suppliers"
         >
           {t.nav.contact}
         </button>
@@ -59,7 +59,7 @@ export const Hero = () => {
       <div className="absolute inset-0 z-0">
         <Image 
           src="/01image.webp" 
-          alt="Vinayak Suppliers Hardware Store Jhapa Nepal - Quality Cement Steel Paints Plumbing Electrical Materials"
+          alt="Binayak Suppliers Hardware Store Jhapa Nepal - Quality Cement Steel Paints Plumbing Electrical Materials"
           fill
           priority
           className="object-cover"

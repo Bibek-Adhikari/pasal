@@ -85,7 +85,7 @@ export const ChatBotOverlay = ({ isOpen, onClose }: ChatBotOverlayProps) => {
                   <Bot size={24} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-lg leading-tight">Vinayak Assistant</h3>
+                  <h3 className="font-bold text-lg leading-tight">Binayak Assistant</h3>
                   <div className="flex items-center gap-1.5">
                     <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
                     <span className="text-xs text-blue-100 font-medium">Online & Ready</span>

@@ -8,7 +8,7 @@ import { useApp } from './AppProvider';
 const MAP_CENTER = "26.6070982,87.7633676";
 const MAP_ZOOM = 19;
 const MAP_EMBED_SATELLITE = `https://www.google.com/maps/embed/v1/view?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_EMBED_API_KEY || ""}&center=${MAP_CENTER}&zoom=${MAP_ZOOM}&maptype=satellite`;
-const MAP_EMBED_FALLBACK = "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d895.0501!2d87.7633676!3d26.6070982!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e591005ac4bdfd%3A0x19b9e5aa648ec8fc!2sVinayak%20Suppliers!5e1!3m2!1sen!2snp!4v1740986000000!5m2!1sen!2snp";
+const MAP_EMBED_FALLBACK = "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d895.0501!2d87.7633676!3d26.6070982!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e591005ac4bdfd%3A0x19b9e5aa648ec8fc!2sBinayak%20Suppliers!5e1!3m2!1sen!2snp!4v1740986000000!5m2!1sen!2snp";
 
 export const ContactSection = () => {
   const { lang } = useApp();
@@ -65,11 +65,11 @@ export const ContactSection = () => {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Vinayak Suppliers Location Map - Kyampa Bazar, Jhapa Nepal"
+              title="Binayak Suppliers Location Map - Kyampa Bazar, Jhapa Nepal"
               className="absolute inset-0 w-full h-full"
             />
             <a
-              href="https://www.google.com/maps/place/Vinayak+Suppliers/@26.6070982,87.7633676,19z/data=!3m1!1e3!4m6!3m5!1s0x39e591005ac4bdfd:0x19b9e5aa648ec8fc!8m2!3d26.6070982!4d87.7633676!16s%2Fg%2F11n4xhvxmn"
+              href="https://www.google.com/maps/place/Binayak+Suppliers/@26.6070982,87.7633676,19z/data=!3m1!1e3!4m6!3m5!1s0x39e591005ac4bdfd:0x19b9e5aa648ec8fc!8m2!3d26.6070982!4d87.7633676!16s%2Fg%2F11n4xhvxmn"
               target="_blank"
               rel="noopener noreferrer"
               className="absolute bottom-4 right-4 bg-white dark:bg-slate-900 px-4 py-2 rounded-lg shadow-lg text-sm font-semibold text-gray-800 dark:text-slate-200 hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors z-10"
@@ -87,7 +87,7 @@ export const ContactSection = () => {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
-              "name": "Vinayak Suppliers",
+              "name": "Binayak Suppliers",
               "alternateName": "विनायक सप्लायर्स",
               "image": "/02image.webp",
               "address": {

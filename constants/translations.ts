@@ -1,7 +1,7 @@
 export const translations = {
   ne: {
     brand: "विनायक सप्लायर्स",
-    brandEn: "Vinayak Suppliers",
+    brandEn: "Binayak Suppliers",
     tagline: "दशक लामो अनुभव र , अटुट विश्वास",
     heroDesc: "विगत १० वर्षदेखि झापाको कमल-२ मा गुणस्तरीय निर्माण सामग्रीहरू उपलब्ध गराउँदै आएको तपाईंको भरपर्दो साथी।",
     estd: "स्थापना: २०७२ वैशाख १३",
@@ -80,7 +80,7 @@ export const translations = {
     }
   },
   en: {
-    brand: "Vinayak Suppliers",
+    brand: "Binayak Suppliers",
     brandEn: "विनायक सप्लायर्स",
     tagline: "A Decade of Experience , and Trust.",
     heroDesc: "Your reliable partner providing quality construction materials in Kamal-2, Jhapa for the past 10 years.",
@@ -108,7 +108,7 @@ export const translations = {
       }
     ],
     aboutTitle: "From Foundation to Walls, We Support Your Dream Home Construction.",
-    aboutDesc: "Established on Baishakh 13, 2072 B.S., Vinayak Suppliers has been providing quality construction materials in Kamal-2, Campa Chowk, Jhapa for the past 10 years. We don't just sell products; we help build the strong foundation of your dream home.",
+    aboutDesc: "Established on Baishakh 13, 2072 B.S., Binayak Suppliers has been providing quality construction materials in Kamal-2, Campa Chowk, Jhapa for the past 10 years. We don't just sell products; we help build the strong foundation of your dream home.",
     aboutPoints: [
       "Guaranteed Quality Products",
       "Reasonable and Affordable Prices",
@@ -135,12 +135,12 @@ export const translations = {
     chatWithUs: "Chat with us",
     moreInfo: "More Info",
     callNow: "Call Now",
-    chatbotGreeting: "Namaste! Welcome to Vinayak Suppliers. I am your AI assistant. How can I help you with our construction materials today?",
+    chatbotGreeting: "Namaste! Welcome to Binayak Suppliers. I am your AI assistant. How can I help you with our construction materials today?",
     moreInfoPage: {
       title: "More Information",
       about_us: {
-        heading: "About Vinayak Suppliers",
-        description: "Established in 2072 BS, Vinayak Suppliers has been a cornerstone of quality construction materials in Kamal-2, Jhapa. With a decade of experience, we provide premium building solutions for your dream home."
+        heading: "About Binayak Suppliers",
+        description: "Established in 2072 BS, Binayak Suppliers has been a cornerstone of quality construction materials in Kamal-2, Jhapa. With a decade of experience, we provide premium building solutions for your dream home."
       },
       features: [
         { "title": "Quality Assurance", "detail": "Certified and top-grade cement, steel rods, and building materials." },

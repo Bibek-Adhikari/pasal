@@ -20,16 +20,16 @@ export async function generateMetadata(
   const t = translations[lang as Language];
 
   return {
-    metadataBase: new URL("https://vinayaksuppliers.vercel.app"),
+    metadataBase: new URL("https://binayaksuppliers.vercel.app"),
     title: {
       default: `${t.brand} | ${t.brandEn} - Construction Materials in Jhapa`,
       template: `%s | ${t.brandEn}`
     },
     description: t.heroDesc + " " + t.aboutDesc.substring(0, 100) + "...",
-    keywords: ["vinayak Suppliers", "विनायक सप्लायर्स", "Construction Materials Jhapa", "Hardware Store Jhapa", "Cement Steel Jhapa", "Paints Jhapa", "Plumbing Jhapa", "Electricals Jhapa", "Kamal-2 Jhapa", "Campa Chowk Jhapa", "निर्माण सामग्री झापा", "Construction Materials Nepal", "Building Materials Supplier"],
-    authors: [{ name: "vinayak Suppliers" }],
-    creator: "vinayak Suppliers",
-    publisher: "vinayak Suppliers",
+    keywords: ["binayak Suppliers", "विनायक सप्लायर्स", "Construction Materials Jhapa", "Hardware Store Jhapa", "Cement Steel Jhapa", "Paints Jhapa", "Plumbing Jhapa", "Electricals Jhapa", "Kamal-2 Jhapa", "Campa Chowk Jhapa", "निर्माण सामग्री झापा", "Construction Materials Nepal", "Building Materials Supplier"],
+    authors: [{ name: "binayak Suppliers" }],
+    creator: "binayak Suppliers",
+    publisher: "binayak Suppliers",
     robots: {
       index: true,
       follow: true,
@@ -42,26 +42,26 @@ export async function generateMetadata(
       },
     },
     alternates: {
-      canonical: `https://vinayaksuppliers.vercel.app/${lang}`,
+      canonical: `https://binayaksuppliers.vercel.app/${lang}`,
       languages: {
-        en: "https://vinayaksuppliers.vercel.app/en",
-        ne: "https://vinayaksuppliers.vercel.app/ne",
+        en: "https://binayaksuppliers.vercel.app/en",
+        ne: "https://binayaksuppliers.vercel.app/ne",
       },
     },
     openGraph: {
       type: "website",
-      url: `https://vinayaksuppliers.vercel.app/${lang}`,
-      siteName: "Vinayak Suppliers",
+      url: `https://binayaksuppliers.vercel.app/${lang}`,
+      siteName: "Binayak Suppliers",
       title: `${t.brand} | ${t.brandEn} - Construction Materials in Jhapa`,
       description: t.heroDesc,
       locale: lang === 'ne' ? "ne_NP" : "en_NP",
       alternateLocale: lang === 'ne' ? "en_NP" : "ne_NP",
       images: [
         {
-          url: "https://vinayaksuppliers.vercel.app/02image.webp",
+          url: "https://binayaksuppliers.vercel.app/02image.webp",
           width: 1200,
           height: 630,
-          alt: "Vinayak Suppliers - Construction Materials in Jhapa",
+          alt: "Binayak Suppliers - Construction Materials in Jhapa",
         },
       ],
     },
@@ -69,8 +69,8 @@ export async function generateMetadata(
       card: "summary_large_image",
       title: `${t.brand} | ${t.brandEn} - Construction Materials in Jhapa`,
       description: t.heroDesc,
-      creator: "@vinayak_suppliers",
-      images: ["https://vinayaksuppliers.vercel.app/02image.webp"],
+      creator: "@binayak_suppliers",
+      images: ["https://binayaksuppliers.vercel.app/02image.webp"],
     },
     verification: {
       google: "google-site-verification-code",
@@ -102,12 +102,12 @@ export default async function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "HardwareStore",
-              "name": "Vinayak Suppliers",
+              "name": "Binayak Suppliers",
               "alternateName": "विनायक सप्लायर्स",
-              "description": "Vinayak Suppliers in Kamal-2, Campa Chowk, Jhapa. 10 years of trust in providing quality Cement, Steel, Paints, Plumbing, and Electrical materials.",
+              "description": "Binayak Suppliers in Kamal-2, Campa Chowk, Jhapa. 10 years of trust in providing quality Cement, Steel, Paints, Plumbing, and Electrical materials.",
               "image": "/02image.webp",
-              "@id": "https://vinayaksuppliers.vercel.app",
-              "url": `https://vinayaksuppliers.vercel.app/${lang}`,
+              "@id": "https://binayaksuppliers.vercel.app",
+              "url": `https://binayaksuppliers.vercel.app/${lang}`,
               "telephone": "+9779842692437",
               "priceRange": "$",
               "address": {
@@ -158,9 +158,9 @@ export default async function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "Vinayak Suppliers",
+              "name": "Binayak Suppliers",
               "alternateName": "बिनायक सप्लायर्स",
-              "url": "https://vinayaksuppliers.vercel.app",
+              "url": "https://binayaksuppliers.vercel.app",
               "logo": "/ganesh.png",
               "contactPoint": {
                 "@type": "ContactPoint",
