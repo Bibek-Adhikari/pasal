@@ -42,7 +42,7 @@ npm install
 Copy the example environment file and configure your API keys:
 
 ```bash
-cp .env.example .env
+cp .env.example .env.local
 ```
 
 Edit `.env` with your API keys:

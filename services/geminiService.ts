@@ -39,8 +39,12 @@ FINAL REMINDER: Your primary language is Nepali (Devanagari). Always start in Ne
 
 export async function generateStoreResponse(userPrompt: string) {
   // Check environment variables
-  const geminiKey = (process.env.GEMINI_API_KEY || "").replace(/"/g, '');
-  const groqKey = (process.env.GROQ_API_KEY || "").replace(/"/g, '');
+  const cleanKey = (value: string | undefined) => {
+    const key = (value || '').replace(/["']/g, '').trim();
+    return key && !key.startsWith('YOUR_') ? key : '';
+  };
+  const geminiKey = cleanKey(process.env.GEMINI_API_KEY);
+  const groqKey = cleanKey(process.env.GROQ_API_KEY);
 
   // Try Groq first (faster)
   if (groqKey) {
@@ -69,7 +73,7 @@ export async function generateStoreResponse(userPrompt: string) {
     return "I am sorry, the AI assistant is not properly configured. Please add an API key (GEMINI_API_KEY or GROQ_API_KEY) to your .env.local file.";
   }
   
-  return "I encountered an error connecting to our AI service. This might be due to a rate limit or invalid API key. Please check your configuration.";
+  return "I encountered an error connecting to our AI service. Please verify that the configured API key is valid and that the deployment has been restarted after changing it.";
 }
 
 async function generateWithGemini(systemPrompt: string, userPrompt: string, apiKey: string): Promise<string> {
@@ -136,7 +140,13 @@ async function generateWithGroq(systemPrompt: string, userPrompt: string, apiKey
     }
 
     const data = await response.json();
-    return data.choices?.[0]?.message?.content;
+    const content = data.choices?.[0]?.message?.content;
+
+    if (!content) {
+      throw new Error(`Groq API returned no message content for ${model}`);
+    }
+
+    return content;
   };
 
   try {
