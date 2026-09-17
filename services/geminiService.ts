@@ -62,7 +62,7 @@ export async function generateStoreResponse(userPrompt: string) {
     } catch (error: any) {
       console.error("Gemini Error:", error.message || error);
       if (error.message?.includes("429") || error.message?.includes("quota") || error.message?.includes("limit")) {
-        return "The AI service (Gemini) has reached its free tier limit. Please wait a minute or provide a Groq API key for faster service.";
+        throw new Error("The AI service has reached its usage limit.");
       }
     }
   }
@@ -70,10 +70,10 @@ export async function generateStoreResponse(userPrompt: string) {
   // If neither works
   if (!geminiKey && !groqKey) {
     console.error("No API keys found!");
-    return "I am sorry, the AI assistant is not properly configured. Please add an API key (GEMINI_API_KEY or GROQ_API_KEY) to your .env.local file.";
+    throw new Error("The AI assistant is not properly configured.");
   }
   
-  return "I encountered an error connecting to our AI service. Please verify that the configured API key is valid and that the deployment has been restarted after changing it.";
+  throw new Error("I encountered an error connecting to our AI service.");
 }
 
 async function generateWithGemini(systemPrompt: string, userPrompt: string, apiKey: string): Promise<string> {

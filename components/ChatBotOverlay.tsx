@@ -10,6 +10,8 @@ import { translations } from '../constants/translations';
 interface Message {
   role: 'user' | 'bot';
   content: string;
+  isError?: boolean;
+  userQuery?: string;
 }
 
 interface ChatBotOverlayProps {
@@ -52,7 +54,7 @@ export const ChatBotOverlay = ({ isOpen, onClose }: ChatBotOverlayProps) => {
       const response = await generateStoreResponse(userMsg);
       setMessages(prev => [...prev, { role: 'bot', content: response || 'I am sorry, I could not generate a response.' }]);
     } catch (error) {
-      setMessages(prev => [...prev, { role: 'bot', content: 'There was an error connecting to our AI. Please try again later.' }]);
+      setMessages(prev => [...prev, { role: 'bot', content: '', isError: true, userQuery: userMsg }]);
     } finally {
       setIsLoading(false);
     }
@@ -124,7 +126,25 @@ export const ChatBotOverlay = ({ isOpen, onClose }: ChatBotOverlayProps) => {
                         ? 'bg-brand-blue dark:bg-blue-600 text-white rounded-tr-none'
                         : 'bg-gray-100 dark:bg-slate-800 text-gray-800 dark:text-slate-200 rounded-tl-none'
                     } shadow-sm`}>
-                      <p className="text-sm leading-relaxed whitespace-pre-wrap">{msg.content}</p>
+                      {msg.isError ? (
+                        <div className="p-3 my-[-0.25rem] bg-slate-800 border border-slate-700 rounded-lg text-sm text-slate-200">
+                          <p className="mb-2">
+                            🤖 माफ गर्नुहोला, अहिले हाम्रो AI सहायक उपलब्ध छैन।
+                          </p>
+                          <a
+                            href={`https://wa.me/9779842692437?text=${encodeURIComponent(
+                              'नमस्कार विनायक सप्लायर्स! मलाई यो सामानबारे सोध्नु थियो: ' + msg.userQuery
+                            )}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-3 py-2 bg-green-600 hover:bg-green-700 text-white font-medium rounded-md text-xs transition-colors"
+                          >
+                            💬 WhatsApp मा सिधै सोध्नुहोस्
+                          </a>
+                        </div>
+                      ) : (
+                        <p className="text-sm leading-relaxed whitespace-pre-wrap">{msg.content}</p>
+                      )}
                     </div>
                   </div>
                 </div>
